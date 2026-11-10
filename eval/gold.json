@@ -1,0 +1,499 @@
+[
+ {
+  "reportId": "R001",
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "route": "auto_apply",
+  "edit": {
+   "field": "answer",
+   "find": "C",
+   "replace": "A"
+  },
+  "note": "V=sqrt(40^2+30^2)=50 -> A"
+ },
+ {
+  "reportId": "R002",
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "route": "auto_apply",
+  "edit": {
+   "field": "answer",
+   "find": "C",
+   "replace": "A"
+  },
+  "note": "V=sqrt(40^2+30^2)=50 -> A"
+ },
+ {
+  "reportId": "R003",
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "route": "auto_apply",
+  "edit": {
+   "field": "answer",
+   "find": "C",
+   "replace": "A"
+  },
+  "note": "V=sqrt(40^2+30^2)=50 -> A"
+ },
+ {
+  "reportId": "R004",
+  "questionId": "68e870ef42c06737d6e565c4",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "route": "auto_apply",
+  "edit": {
+   "field": "answer",
+   "find": "A",
+   "replace": "D"
+  },
+  "note": "P=1/3 rho v^2=4800=D; student value 8225 (B) is wrong too"
+ },
+ {
+  "reportId": "R005",
+  "questionId": "68dea616d0cda73d07e93ae6",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "route": "auto_apply",
+  "edit": {
+   "field": "answer",
+   "find": "2",
+   "replace": "1"
+  },
+  "note": "n q/(2 eps0): total flux = q/(2 eps0) so n=1"
+ },
+ {
+  "reportId": "R006",
+  "questionId": "696a866665252c04fc1f81c2",
+  "verdict": "defect",
+  "repair": "stem_data",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "solid copper cube,",
+   "replace": "solid copper cube of side 10 cm,"
+  },
+  "note": "solution uses (10x10^-2)^3"
+ },
+ {
+  "reportId": "R007",
+  "questionId": "60f742f6660d187cc13a8078",
+  "verdict": "defect",
+  "repair": "stem_data",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "an inductance are",
+   "replace": "an inductance of 95.5 mH are"
+  },
+  "note": "solution uses L=95.5e-3 H -> Z=50"
+ },
+ {
+  "reportId": "R008",
+  "questionId": "60f742f6660d187cc13a8078",
+  "verdict": "defect",
+  "repair": "stem_data",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "an inductance are",
+   "replace": "an inductance of 95.5 mH are"
+  },
+  "note": "solution uses L=95.5e-3 H -> Z=50"
+ },
+ {
+  "reportId": "R009",
+  "questionId": "622f08d7b70e4b50e4500a1b",
+  "verdict": "defect",
+  "repair": "option_repair",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "option D missing; unrecoverable from solution -> authored content, human only"
+ },
+ {
+  "reportId": "R010",
+  "questionId": "622f08d7b70e4b50e4500a1b",
+  "verdict": "defect",
+  "repair": "option_repair",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "option D missing; unrecoverable from solution -> authored content, human only"
+ },
+ {
+  "reportId": "R011",
+  "questionId": "68e872546e45ba37dcc16bc0",
+  "verdict": "defect",
+  "repair": "option_repair",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "(C) <br />(D)",
+   "replace": "(C) 1 : 1<br />(D)"
+  },
+  "note": "solution: |F12|=|F21| -> 1:1"
+ },
+ {
+  "reportId": "R012",
+  "questionId": "61dffbec08489156b684bd22",
+  "verdict": "defect",
+  "repair": "spelling",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "Epithellial tisue",
+   "replace": "Epithelial tissue"
+  },
+  "note": ""
+ },
+ {
+  "reportId": "R013",
+  "questionId": "617fa18efd53ff1629ed890f",
+  "verdict": "defect",
+  "repair": "exam_reference",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "(NEET 2019) ",
+   "replace": ""
+  },
+  "note": ""
+ },
+ {
+  "reportId": "R014",
+  "questionId": "63765a28f1d8416ae0408d89",
+  "verdict": "defect",
+  "repair": "markup_leak",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "\\frac{7}{8}",
+   "replace": "7/8"
+  },
+  "note": ""
+ },
+ {
+  "reportId": "R015",
+  "questionId": "6956d79788d7701e5617bc29",
+  "verdict": "defect",
+  "repair": "identical_options",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "B and C both \"0 W\""
+ },
+ {
+  "reportId": "R016",
+  "questionId": "6263d75bdd44e265ef926d97",
+  "verdict": "defect",
+  "repair": "solution_fix",
+  "route": "auto_apply",
+  "edit": {
+   "field": "solution",
+   "find": "a = 40 cm",
+   "replace": "a<sup>2</sup> = 400 &rArr; a = 20 cm"
+  },
+  "note": "key 20 correct; solution step wrong"
+ },
+ {
+  "reportId": "R017",
+  "questionId": "6208e80a9cb2ab67dac61bd0",
+  "verdict": "already_fixed",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": "faculty fixed 2026-11-07, after the 11-04 report"
+ },
+ {
+  "reportId": "R018",
+  "questionId": "612151a6a34397610a9a2e58",
+  "verdict": "defect",
+  "repair": "solution_fix",
+  "route": "auto_apply",
+  "edit": {
+   "field": "solution",
+   "find": "*",
+   "replace": "<h3>&lambda; = h/p &rArr; p = h/&lambda; = (6.63&times;10<sup>&minus;34</sup>)/(3&times;10<sup>&minus;10</sup>) = 2.21&times;10<sup>&minus;24</sup> kg m/s<br/>KE = p<sup>2</sup>/2m = (2.21&times;10<sup>&minus;24</sup>)<sup>2</sup>/(2&times;9.1&times;10<sup>&minus;31</sup>) = 2.68&times;10<sup>&minus;18</sup> J = 16.8 eV<br/>Hence option (B).</h3>"
+  },
+  "note": "key B correct (KE=16.8 eV); solution is a garbled fragment"
+ },
+ {
+  "reportId": "R019",
+  "questionId": "612151a6a34397610a9a2e58",
+  "verdict": "defect",
+  "repair": "solution_fix",
+  "route": "auto_apply",
+  "edit": {
+   "field": "solution",
+   "find": "*",
+   "replace": "<h3>&lambda; = h/p &rArr; p = h/&lambda; = (6.63&times;10<sup>&minus;34</sup>)/(3&times;10<sup>&minus;10</sup>) = 2.21&times;10<sup>&minus;24</sup> kg m/s<br/>KE = p<sup>2</sup>/2m = (2.21&times;10<sup>&minus;24</sup>)<sup>2</sup>/(2&times;9.1&times;10<sup>&minus;31</sup>) = 2.68&times;10<sup>&minus;18</sup> J = 16.8 eV<br/>Hence option (B).</h3>"
+  },
+  "note": "key B correct (KE=16.8 eV); solution is a garbled fragment"
+ },
+ {
+  "reportId": "R020",
+  "questionId": "68c8153cfb6b2f16e2d3ceaf",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "route": "auto_apply",
+  "edit": {
+   "field": "answer",
+   "find": [
+    "A, B, D"
+   ],
+   "replace": [
+    "A",
+    "B",
+    "D"
+   ]
+  },
+  "note": "malformed key; set A,B,D is correct (C wrong: v||B gives straight line)"
+ },
+ {
+  "reportId": "R021",
+  "questionId": "68f21caf941cda588bc04365",
+  "verdict": "defect",
+  "repair": "type_mismatch",
+  "route": "auto_apply",
+  "edit": [
+   {
+    "field": "questionType",
+    "find": "mcq",
+    "replace": "scq"
+   },
+   {
+    "field": "answer",
+    "find": [
+     "",
+     "B"
+    ],
+    "replace": "B"
+   }
+  ],
+  "note": "single-answer question stored as mcq with blank key entry"
+ },
+ {
+  "reportId": "R022",
+  "questionId": "61ee6c9d90a1a968a168686b",
+  "verdict": "defect",
+  "repair": "spelling",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "Choroid plexux",
+   "replace": "Choroid plexus"
+  },
+  "note": ""
+ },
+ {
+  "reportId": "R023",
+  "questionId": "68ecbacb2ec87a18deba1ad7",
+  "verdict": "defect",
+  "repair": "wrong_chapter",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "action potential filed under Botany/The Living World"
+ },
+ {
+  "reportId": "R024",
+  "questionId": "5fc60508028950133eac8963",
+  "verdict": "defect",
+  "repair": "answer_form",
+  "route": "auto_apply",
+  "edit": {
+   "field": "question",
+   "find": "frictional force is equal to",
+   "replace": "frictional force (in N) is equal to"
+  },
+  "note": ""
+ },
+ {
+  "reportId": "R025",
+  "questionId": "622df25ab70e4b50e44ff837",
+  "verdict": "defect",
+  "repair": "diagram",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "stem says as shown in figure; no image"
+ },
+ {
+  "reportId": "R026",
+  "questionId": "620e23cecc50543bc7db9186",
+  "verdict": "defect",
+  "repair": "syllabus",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "question stays live; faculty confirm"
+ },
+ {
+  "reportId": "R027",
+  "questionId": "6062ec84518e9535e120c422",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": "comment makes no checkable claim; key verified correct (gamma=3*alpha=5.7e-5)",
+  "alt_verdicts": [
+   "not_actionable"
+  ]
+ },
+ {
+  "reportId": "R028",
+  "questionId": "6956d7bb23cb221e570d6013",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R029",
+  "questionId": "68e8734442c06737d6e56da4",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R030",
+  "questionId": "6956d7e988d7701e5617bd3e",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R031",
+  "questionId": "68dea619d0cda73d07e93aee",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R032",
+  "questionId": "68dea7c2387eea3d0d95f9bb",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R033",
+  "questionId": "68dea715387eea3d0d95f790",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R034",
+  "questionId": "695ee00b88d7701e561aabc5",
+  "verdict": "defect",
+  "repair": "unsound",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "A is false (I=2I0 at pi/2); R is not \"always\"; no option fits; solution self-contradictory",
+  "alt_verdicts": [
+   "no_error"
+  ]
+ },
+ {
+  "reportId": "R035",
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R036",
+  "questionId": "60ca4feb6420652745f55522",
+  "verdict": "display_issue",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R037",
+  "questionId": "68c9ae5afb6b2f16e2d43b1c",
+  "verdict": "display_issue",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R038",
+  "questionId": "68f21df0941cda588bc0470b",
+  "verdict": "app_issue",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R039",
+  "questionId": "68c801bc1b1dbc16dc93bf2b",
+  "verdict": "language_mode",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R040",
+  "questionId": "6264197209f4fd65f58f5707",
+  "verdict": "not_actionable",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": "vague; key correct. Unreported typo Canolla",
+  "alt_verdicts": [
+   "no_error"
+  ]
+ },
+ {
+  "reportId": "R041",
+  "questionId": "6208e298fa399567e0878700",
+  "verdict": "not_actionable",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R042",
+  "questionId": "63c7cce12981ed154ee92c94",
+  "verdict": "defect",
+  "repair": "wrong_chapter",
+  "route": "faculty_review",
+  "edit": null,
+  "note": "displacement current filed under geometrical optics"
+ },
+ {
+  "reportId": "R043",
+  "questionId": "636283dbe3770c24f866e6d6",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ },
+ {
+  "reportId": "R044",
+  "questionId": "68dea577d0cda73d07e9391c",
+  "verdict": "no_error",
+  "repair": null,
+  "route": "no_change",
+  "edit": null,
+  "note": ""
+ }
+]
