@@ -103,8 +103,34 @@ def apply_edit(q, edit):
     return out
 
 
-def decide_route(verdict, repair, edit, q, confidence, key_checks_agree=None, threshold=0.9):
-    """Final routing. Returns (route, reasons). Anything doubtful -> faculty_review."""
+BIOLOGY = {"Biology", "Botany", "Zoology"}
+SOLUTION_WRITES = {"solution_fix", "solution_missing"}
+INSERTS_VALUES = {"stem_data", "option_repair"}
+
+
+def inserted_numbers_unseen(q, edit):
+    """Numbers an edit ADDS to the stem that never appear in the stored solution.
+    Weak consistency check only (digits from subscripts or unrelated steps also count as
+    'seen'); it catches invented values, it does not prove the inserted value is right."""
+    sol = _digits(payload(q)["solution"])
+    out = []
+    for e in edit_list(edit):
+        if e.get("field") != "question" or e.get("find") == WHOLE:
+            continue
+        before = _digits(e.get("find", ""))
+        for n in _digits(e.get("replace", "")):
+            if n in before:
+                before.remove(n)
+            elif n not in sol:
+                out.append(n)
+    return out
+
+
+def decide_route(verdict, repair, edit, q, confidence, key_checks_agree=None, threshold=0.9,
+                 solution_checks_agree=None):
+    """Final routing. Returns (route, reasons). Anything doubtful -> faculty_review.
+    key_checks_agree: 2 blind solves + stored solution agree on the NEW key (computed in run.py).
+    solution_checks_agree: 2 blind solves agree with the key AND the edited solution ends there."""
     if verdict != "defect":
         return "no_change", []
     reasons = []
@@ -114,10 +140,20 @@ def decide_route(verdict, repair, edit, q, confidence, key_checks_agree=None, th
     if not spec["auto"]:
         return "faculty_review", ["%s needs a human by policy" % repair]
     reasons += validate_edit(q, repair, edit)
-    if not edit_list(edit):
+    edits = edit_list(edit)
+    if not edits:
         reasons.append("no edit proposed")
     if confidence < threshold:
         reasons.append("confidence %.2f < %.2f" % (confidence, threshold))
-    if repair == "answer_key" and key_checks_agree is not True:
-        reasons.append("answer_key needs 2 independent solves + stored solution to agree")
+    touches_answer = any(e.get("field") == "answer" for e in edits)
+    if (repair == "answer_key" or touches_answer) and key_checks_agree is not True:
+        reasons.append("answer change needs 2 independent solves + stored solution to agree")
+    if touches_answer and q.get("subject") in BIOLOGY:
+        reasons.append("biology key change: nothing to compute, faculty decides")
+    if repair in SOLUTION_WRITES and solution_checks_agree is not True:
+        reasons.append("solution edit needs both solves = key and the edited solution to end at the key")
+    if repair in INSERTS_VALUES:
+        unseen = inserted_numbers_unseen(q, edit)
+        if unseen:
+            reasons.append("inserted value(s) %s not found anywhere in the stored solution" % unseen)
     return ("faculty_review", reasons) if reasons else ("auto_apply", [])

@@ -57,3 +57,44 @@ def parse_options(stem_html):
         end = pos[letters[i + 1]] if i + 1 < len(letters) else len(t)
         out[l] = t[pos[l] + 3:end].strip()
     return out
+
+
+# --- Model-facing HTML ---------------------------------------------------------------
+# Models read MathML directly (flat() loses exponents and fractions: r<sup>2</sup> -> "r 2").
+# We only strip presentation noise: <span> wrappers and style/class/xmlns attributes.
+# clean_map() keeps an index map so a `find` the model copies from the CLEAN text can be
+# mapped back to the exact RAW substring the guards and apply_edit work on.
+_NOISE = re.compile(r'</?span\b[^>]*>|\s(?:style|class|xmlns)="[^"]*"')
+_SPAN = re.compile(r'</?span\b[^>]*>')
+
+
+def clean_map(raw):
+    """Return (clean_text, idx, removed): idx[i] = raw index of clean char i;
+    removed = [(raw_start, raw_end, text)] of stripped pieces."""
+    out, idx, removed, pos = [], [], [], 0
+    for m in _NOISE.finditer(raw):
+        for j in range(pos, m.start()):
+            out.append(raw[j]); idx.append(j)
+        removed.append((m.start(), m.end(), m.group(0)))
+        pos = m.end()
+    for j in range(pos, len(raw)):
+        out.append(raw[j]); idx.append(j)
+    return "".join(out), idx, removed
+
+
+def clean_html(raw):
+    return clean_map(raw)[0]
+
+
+def map_find(raw, find_clean, replace_clean):
+    """Map a (find, replace) written against clean_html(raw) back onto raw.
+    Returns (raw_find, raw_replace) or None if find is absent or not unique in the clean text.
+    Span tags stripped from inside the region are re-appended to the replacement so the
+    surrounding markup stays balanced."""
+    clean, idx, removed = clean_map(raw)
+    if not find_clean or clean.count(find_clean) != 1:
+        return None
+    s = clean.find(find_clean)
+    rs, re_ = idx[s], idx[s + len(find_clean) - 1] + 1
+    inner_spans = "".join(t for a, b, t in removed if a >= rs and b <= re_ and _SPAN.fullmatch(t))
+    return raw[rs:re_], replace_clean + inner_spans

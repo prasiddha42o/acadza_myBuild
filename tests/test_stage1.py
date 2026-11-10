@@ -34,10 +34,18 @@ def test_every_gold_edit_passes_guards_and_applies(g):
     assert q is Q[g["questionId"]]
 
 
+# Stage 2 guard: values inserted into a stem must appear in the stored solution (weak check).
+# R011's solution only says |F12| = |F21| (numbers 12, 21), so "1 : 1" is not seen -> faculty.
+# Gold keeps auto_apply as the label; the engine is deliberately stricter here.
+STRICTER_THAN_GOLD = {"R011": "faculty_review"}
+
+
 def test_gold_routes_match_policy():
     for g in GOLD:
-        route, why = decide_route(g["verdict"], g["repair"], g["edit"], Q[g["questionId"]], 0.95, key_checks_agree=True)
-        assert route == g["route"], (g["reportId"], route, why)
+        expected = STRICTER_THAN_GOLD.get(g["reportId"], g["route"])
+        route, why = decide_route(g["verdict"], g["repair"], g["edit"], Q[g["questionId"]], 0.95,
+                                  key_checks_agree=True, solution_checks_agree=True)
+        assert route == expected, (g["reportId"], route, why)
 
 
 def test_scope_violation_rejected():
