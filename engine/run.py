@@ -216,7 +216,9 @@ def student_reply(llm, report, row, found):
 # --- the audit ----------------------------------------------------------------------------------
 def solve(llm, role, q):
     out = llm.json(role, P.SOLVER_V1, solver_input(q), P.SOLVER_SCHEMA, effort="high")
-    return {k: out.get(k, "") for k in ("answer", "missing_info", "working", "confidence")}
+    res = {k: out.get(k, "") for k in ("answer", "missing_info", "working", "confidence")}
+    res["model"] = llm.last_model
+    return res
 
 
 def extract(llm, q, solution_html):
@@ -298,16 +300,20 @@ def audit_question(llm, q, reports):
     concl = extract(llm, q, payload(q)["solution"])
     sv = dict(a=norm_answer(t, a["answer"]), b=norm_answer(t, b["answer"]),
               concl=norm_answer(t, concl["answer"]), key=norm_answer(t, payload(q)["answer"]))
-    sv["solvers_agree"] = same(sv["a"], sv["b"])
+    # Agreement only counts if two *different* models solved it. With fallback chains both solvers can
+    # land on the same model; then the "second opinion" is not independent and key changes must not auto-apply.
+    sv["solvers_independent"] = a["model"] != b["model"]
+    sv["solvers_agree"] = same(sv["a"], sv["b"]) and sv["solvers_independent"]
     checks = dict(a=a, b=b, concl=concl, solvers_agree="yes" if sv["solvers_agree"] else "no",
                   solvers_match_key="yes" if sv["solvers_agree"] and same(sv["a"], sv["key"]) else "no",
                   solvers_match_solution="yes" if sv["solvers_agree"] and same(sv["a"], sv["concl"]) else "no")
 
-    raw, error = None, None
+    raw, error, auditor_model = None, None, None
     try:
         raw = llm.json("auditor", P.AUDITOR_V1, auditor_input(q, live or reports, checks, lint,
                                                             {k: v["hint"] for k, v in pre.items()}),
                        P.auditor_schema(), effort="high")
+        auditor_model = llm.last_model
     except LLMError as e:
         error = str(e)
     defects = [route_defect(llm, q, d, sv) for d in (raw or {}).get("defects", []) if isinstance(d, dict)]
@@ -358,9 +364,9 @@ def audit_question(llm, q, reports):
     unreported = [dict(d, questionId=q["_id"]) for d in defects if d["id"] not in linked]
     audit = dict(questionId=q["_id"], subject=q["subject"], chapter=q["chapter"], type=t, lint=lint,
                  pre_triage=pre, solver_a=a, solver_b=b, solution_concludes=concl,
-                 normalised={k: show(v) if k != "solvers_agree" else v for k, v in sv.items()},
+                 normalised={k: v if isinstance(v, bool) else show(v) for k, v in sv.items()},
                  defects=defects, auditor_error=error, auditor_raw=raw,
-                 models={r: llm.model(r) for r in ("solver_a", "solver_b", "auditor", "reply")},
+                 models=dict(solver_a=a["model"], solver_b=b["model"], auditor=auditor_model),
                  prompt_versions={k: v[0] for k, v in P.PROMPTS.items()})
     return rows, audit, unreported
 
@@ -431,7 +437,11 @@ def main(argv=None):
     (OUT / ("audits%s.json" % suffix)).write_text(json.dumps(audits, indent=1, ensure_ascii=False, default=list), encoding="utf-8")
     (OUT / ("report_rows%s.json" % suffix)).write_text(json.dumps(sorted(rows, key=lambda r: r["reportId"]), indent=1, ensure_ascii=False), encoding="utf-8")
     (OUT / ("unreported_findings%s.json" % suffix)).write_text(json.dumps(unreported, indent=1, ensure_ascii=False), encoding="utf-8")
-    summary = dict(summarise(rows, audits), llm=llm.stats, complete=complete, stopped=stopped)
+    summary = dict(summarise(rows, audits), llm=dict(llm.stats, answered_by_model=llm.used,
+                                                       exhausted=sorted(llm.exhausted)),
+                   audits_solvers_same_model=[a["questionId"] for a in audits
+                                              if not a["normalised"].get("solvers_independent", True)],
+                   complete=complete, stopped=stopped)
     (OUT / ("run_summary%s.json" % suffix)).write_text(json.dumps(summary, indent=1, ensure_ascii=False, default=list), encoding="utf-8")
     print(json.dumps(summary, indent=1, ensure_ascii=False, default=list))
     print("wrote", target.relative_to(ROOT))

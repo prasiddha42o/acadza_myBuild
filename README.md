@@ -76,7 +76,7 @@ export GEMINI_API_KEY=...                         # never commit it
 .venv/bin/uvicorn console.app:app --reload        # console at http://127.0.0.1:8000
 ```
 
-Env vars: `PROVIDER` (`gemini` default, or `anthropic` with `ANTHROPIC_API_KEY`), `SOLVER_A_MODEL`, `SOLVER_B_MODEL`, `AUDITOR_MODEL`, `REPLY_MODEL`, `LLM_MIN_INTERVAL` (seconds between calls per model, default 6), and `LLM_TEMPERATURE` (default 0; it is dropped automatically if a model rejects it). If the free daily quota runs out, the run stops cleanly and resumes from the cache after the reset (midnight Pacific). Partial runs write to `engine_out/*.partial.json`, never to `results.json`.
+Env vars: `PROVIDER` (`gemini` default, or `anthropic` with `ANTHROPIC_API_KEY`), `SOLVER_A_MODEL`, `SOLVER_B_MODEL`, `AUDITOR_MODEL`, `REPLY_MODEL` (each a comma-separated fallback chain: when one free model's daily cap runs out, the next one is used; if both solvers end up on the same model, their agreement does not count), `LLM_MIN_INTERVAL` (seconds between calls per model, default 6), and `LLM_TEMPERATURE` (default 0; it is dropped automatically if a model rejects it). If the free daily quota runs out, the run stops cleanly and resumes from the cache after the reset (midnight Pacific). Partial runs write to `engine_out/*.partial.json`, never to `results.json`.
 
 ## Console
 
@@ -106,4 +106,4 @@ The default provider is the **Gemini API free tier**, and Google's pricing page 
 | `engine/run.py` | The pipeline |
 | `console/` | FastAPI + SQLite + vanilla JS faculty console |
 | `eval/` | My gold labels and the scorer |
-| `tests/` | 80 tests, no network |
+| `tests/` | 83 tests, no network |

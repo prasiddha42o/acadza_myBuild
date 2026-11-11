@@ -27,16 +27,20 @@ def reports_for(q):
 class FakeLLM:
     """solver_a/solver_b/concl: answers; auditor: dict; reply: text. Records every call."""
 
-    def __init__(self, a, b, concl, auditor, reply="Thanks, a teacher is checking it.", edited_concl=None):
+    def __init__(self, a, b, concl, auditor, reply="Thanks, a teacher is checking it.", edited_concl=None,
+                 same_solver_model=False):
         self.a, self.b, self.concl, self.auditor, self.reply = a, b, concl, auditor, reply
         self.edited_concl = edited_concl
+        self.same_solver_model = same_solver_model
         self.calls = []
+        self.last_model = None
 
     def model(self, role):
         return "fake-" + role
 
     def json(self, role, system, user, schema, effort="medium"):
         self.calls.append((role, system, user))
+        self.last_model = "fake-solver" if self.same_solver_model and role.startswith("solver") else "fake-" + role
         if role in ("solver_a", "solver_b"):
             ans = self.a if role == "solver_a" else self.b
             return dict(answer=ans, missing_info="", working="w", confidence=0.9)
@@ -100,6 +104,14 @@ def test_R004_auto_applies_only_the_verified_key_not_the_students():
     rows, audit, _ = audit_question(fake, q, reports_for(q["_id"]))
     r = rows[0]
     assert r["route"] == "auto_apply" and r["edit"] == {"field": "answer", "find": "A", "replace": "D"}
+
+
+def test_same_model_for_both_solvers_is_not_independent():
+    # fallback chains can put both solvers on one model; then agreement must not count
+    q = Q[qid("e565c4")]
+    fake = FakeLLM("D", "D", "D", dict(defects=[key_defect("D")], reports=[verdict("R004")]), same_solver_model=True)
+    rows, audit, _ = audit_question(fake, q, reports_for(q["_id"]))
+    assert rows[0]["route"] == "faculty_review" and audit["normalised"]["solvers_independent"] is False
 
 
 def test_auditor_copying_the_student_is_blocked():
@@ -242,6 +254,25 @@ def test_daily_quota_stops_instead_of_spinning(tmp_path, monkeypatch):
     monkeypatch.setattr(llm, "_gemini", boom)
     with pytest.raises(llm_mod.QuotaExhausted):
         llm.json("auditor", "s", "u", {})
+
+
+def test_fallback_chain_uses_cache_first_then_next_model(tmp_path, monkeypatch):
+    monkeypatch.setenv("AUDITOR_MODEL", "m1,m2")
+    llm = llm_mod.LLM(provider="gemini", cache_dir=tmp_path, verbose=False)
+    llm.min_interval = 0
+    called = []
+
+    def fake(model, *a):
+        called.append(model)
+        if model == "m1":
+            raise llm_mod.QuotaExhausted("per day")
+        return '{"ok": 1}'
+    monkeypatch.setattr(llm, "_gemini", fake)
+    assert llm.json("auditor", "s", "u", {}) == {"ok": 1} and llm.last_model == "m2"
+    assert llm.json("auditor", "s", "u2", {}) == {"ok": 1} and called == ["m1", "m2", "m2"]  # m1 not retried
+    llm2 = llm_mod.LLM(provider="gemini", cache_dir=tmp_path, verbose=False)
+    monkeypatch.setattr(llm2, "_gemini", lambda *a: pytest.fail("should be cached"))
+    assert llm2.json("auditor", "s", "u", {}) == {"ok": 1} and llm2.last_model == "m2"
 
 
 # --- PROMPTS.md is verbatim ---------------------------------------------------------------------

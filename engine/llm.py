@@ -3,6 +3,9 @@
 Provider and models come from env vars (defaults = Gemini free tier):
   PROVIDER        gemini | anthropic          (default gemini)
   SOLVER_A_MODEL, SOLVER_B_MODEL, AUDITOR_MODEL, REPLY_MODEL
+                  each may be a comma-separated fallback chain, e.g. "gemini-3.8-flash,gemini-3.1-flash-lite":
+                  a cached answer from any model in the chain is reused; otherwise the first model whose
+                  daily quota is not exhausted is called. LLM.last_model says which one answered.
   GEMINI_API_KEY  / ANTHROPIC_API_KEY         (never committed)
   LLM_MIN_INTERVAL  seconds between calls to the same model (default 6 on Gemini = 10 RPM)
   LLM_TEMPERATURE   default 0; dropped automatically if a model rejects it
@@ -20,11 +23,14 @@ from pathlib import Path
 CACHE = Path(__file__).resolve().parent.parent / ".cache" / "llm"
 
 DEFAULTS = {
+    # Free tier: each model has its own small daily cap, so every role is a fallback chain.
+    # Solver chains are disjoint so the two solves come from different models where possible;
+    # run.py refuses to count agreement when they don't.
     "gemini": {
-        "solver_a": "gemini-3.8-flash",
-        "solver_b": "gemini-3.6-flash",
-        "auditor": "gemini-3.8-flash",
-        "reply": "gemini-3.5-flash-lite",
+        "solver_a": "gemini-3.8-flash,gemini-3.1-flash-lite",
+        "solver_b": "gemini-3.6-flash,gemini-3.5-flash-lite",
+        "auditor": "gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite",
+        "reply": "gemini-3.5-flash-lite,gemini-3.1-flash-lite",
     },
     "anthropic": {
         "solver_a": "claude-opus-5-5",
@@ -39,6 +45,10 @@ MAX_TRIES = 7
 
 class QuotaExhausted(RuntimeError):
     """Daily quota gone. Stop cleanly; the cache keeps finished calls, rerun later."""
+
+
+class ModelUnavailable(QuotaExhausted):
+    """Model name unknown to this key (404). Treated like an exhausted model: try the next one."""
 
 
 class LLMError(RuntimeError):
@@ -74,22 +84,55 @@ class LLM:
         self._client = None
         self._last = {}
         self._dropped = {}          # model -> {"temperature", "thinking"} params it rejected
-        self.stats = dict(calls=0, cache_hits=0, retries=0)
+        self.stats = dict(calls=0, cache_hits=0, retries=0, fallbacks=0)
+        self.exhausted = set()      # models whose daily quota ran out during this run
+        self.last_model = None
+        self.used = {}              # model -> answered calls (cached or live)
+
+    def chain(self, role):
+        raw = os.environ.get(ENV[role]) or DEFAULTS[self.provider][role]
+        return [m.strip() for m in raw.split(",") if m.strip()]
 
     def model(self, role):
-        return os.environ.get(ENV[role], DEFAULTS[self.provider][role])
+        return ",".join(self.chain(role))
 
-    # -- public -----------------------------------------------------------------------
-    def json(self, role, system, user, schema, effort="medium"):
-        model = self.model(role)
+    def _path(self, model, system, user, schema, effort):
         req = dict(provider=self.provider, model=model, system=system, user=user, schema=schema,
                    effort=effort, temperature=self.temperature)
         key = hashlib.sha256(json.dumps(req, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-        path = self.cache_dir / (key + ".json")
-        if path.exists():
-            self.stats["cache_hits"] += 1
-            return json.loads(path.read_text(encoding="utf-8"))["parsed"]
+        return req, self.cache_dir / (key + ".json")
+
+    def _answered(self, model):
+        self.last_model = model
+        self.used[model] = self.used.get(model, 0) + 1
+
+    # -- public -----------------------------------------------------------------------
+    def json(self, role, system, user, schema, effort="medium"):
+        chain = self.chain(role)
+        for model in chain:                                   # 1) any cached answer in the chain
+            _, path = self._path(model, system, user, schema, effort)
+            if path.exists():
+                self.stats["cache_hits"] += 1
+                self._answered(model)
+                return json.loads(path.read_text(encoding="utf-8"))["parsed"]
+        last = None
+        for i, model in enumerate(chain):                     # 2) first model with quota left
+            if model in self.exhausted:
+                continue
+            try:
+                return self._live(model, system, user, schema, effort, fallback=i > 0)
+            except QuotaExhausted as e:
+                self.exhausted.add(model)
+                last = e
+                if self.verbose:
+                    print("  [quota] %s %s; %s" % (
+                        model, "not available" if isinstance(e, ModelUnavailable) else "exhausted for today", "trying next in chain" if i + 1 < len(chain) else "no fallback left"))
+        raise last or QuotaExhausted("every model for %s is exhausted: %s" % (role, chain))
+
+    def _live(self, model, system, user, schema, effort, fallback):
+        req, path = self._path(model, system, user, schema, effort)
         text = self._call_with_retry(model, system, user, schema, effort)
+        self.stats["fallbacks"] += fallback
         try:
             parsed = json.loads(text)
         except (json.JSONDecodeError, TypeError) as e:
@@ -97,6 +140,7 @@ class LLM:
         path.write_text(json.dumps(dict(request={k: v for k, v in req.items() if k != "schema"},
                                         raw=text, parsed=parsed), ensure_ascii=False, indent=1),
                         encoding="utf-8")
+        self._answered(model)
         return parsed
 
     # -- internals --------------------------------------------------------------------
@@ -148,6 +192,8 @@ class LLM:
                 if re.search(r"per ?day|PerDay|daily", msg, re.I):
                     raise QuotaExhausted("%s daily quota exhausted: %s" % (model, msg[:200]))
                 raise _Retryable(msg)
+            if e.code == 404:
+                raise ModelUnavailable("%s not available: %s" % (model, msg[:200]))
             if e.code == 400 and re.search(r"temperature|sampling", msg, re.I) and "temperature" not in dropped:
                 dropped.add("temperature")
                 print("  [note] %s rejects temperature; retrying without it" % model)
