@@ -334,7 +334,8 @@ def audit_question(llm, q, reports):
                 if d["route"] == "faculty_review" and d["reasons"]:
                     ev += " Sent to faculty: " + "; ".join(d["reasons"][:2]) + "."
                 row = dict(base, verdict="defect", repair=d["repair"], edit=d["edit"], route=d["route"],
-                           confidence=conf, evidence=ev.strip())
+                           confidence=conf, evidence=ev.strip(), _defect_id=d["id"], _reasons=d["reasons"],
+                           _suggestion=d["suggestion"])
             found = v.get("evidence") or row["evidence"]
         else:
             row = dict(base, verdict=v["verdict"], repair=None, edit=None, route="no_change",
@@ -419,6 +420,7 @@ def main(argv=None):
     target.write_text(json.dumps(clean_rows, indent=1, ensure_ascii=False), encoding="utf-8")
     suffix = "" if complete else ".partial"
     (OUT / ("audits%s.json" % suffix)).write_text(json.dumps(audits, indent=1, ensure_ascii=False, default=list), encoding="utf-8")
+    (OUT / ("report_rows%s.json" % suffix)).write_text(json.dumps(sorted(rows, key=lambda r: r["reportId"]), indent=1, ensure_ascii=False), encoding="utf-8")
     (OUT / ("unreported_findings%s.json" % suffix)).write_text(json.dumps(unreported, indent=1, ensure_ascii=False), encoding="utf-8")
     summary = dict(summarise(rows, audits), llm=llm.stats, complete=complete, stopped=stopped)
     (OUT / ("run_summary%s.json" % suffix)).write_text(json.dumps(summary, indent=1, ensure_ascii=False, default=list), encoding="utf-8")

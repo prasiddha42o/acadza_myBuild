@@ -1,3 +1,6 @@
 google-genai>=3.0
 anthropic>=2.7    # optional: PROVIDER=anthropic
 pytest>=8
+fastapi>=0.115
+uvicorn>=0.30
+httpx>=0.27       # tests (FastAPI TestClient)

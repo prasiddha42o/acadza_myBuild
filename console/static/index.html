@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report review · Acadza</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/vendor/purify.min.js"></script>
+</head>
+<body>
+<div id="demo" class="demo" hidden>DEMO DATA: built from hand labels (eval/gold.json), not engine output. Run the engine to load real results.</div>
+<header>
+  <div class="brand">Report review</div>
+  <div id="progress" class="progress"></div>
+  <div class="spacer"></div>
+  <label class="actor">Reviewing as <input id="actor" maxlength="40" placeholder="your name"></label>
+  <button id="btn-audit" class="ghost" title="Every action, newest first">Audit log</button>
+  <button id="btn-keys" class="ghost" title="Keyboard shortcuts">Keys</button>
+  <button id="btn-reset" class="ghost danger" title="Restore the precomputed state (demo)">Reset</button>
+</header>
+<div class="layout">
+  <aside id="queue" aria-label="Queue"></aside>
+  <main id="detail" tabindex="-1"><div class="empty">Loading…</div></main>
+</div>
+<div id="toast" class="toast" hidden></div>
+<dialog id="dlg-keys">
+  <h3>Keyboard</h3>
+  <table class="keys">
+    <tr><td><kbd>J</kbd> / <kbd>K</kbd></td><td>next / previous question</td></tr>
+    <tr><td><kbd>A</kbd></td><td>approve the first open fix</td></tr>
+    <tr><td><kbd>R</kbd></td><td>reject the first open fix</td></tr>
+    <tr><td><kbd>E</kbd></td><td>edit the first open fix</td></tr>
+    <tr><td><kbd>U</kbd></td><td>undo the first auto-applied fix</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>cancel editing</td></tr>
+  </table>
+  <form method="dialog"><button>Close</button></form>
+</dialog>
+<dialog id="dlg-audit"><h3>Audit log</h3><div id="audit-body"></div><form method="dialog"><button>Close</button></form></dialog>
+<script src="/static/app.js"></script>
+</body>
+</html>

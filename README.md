@@ -18,6 +18,16 @@ Env vars: `PROVIDER` (`gemini` default, or `anthropic` with `ANTHROPIC_API_KEY`)
 
 Every model response is cached in `.cache/llm/` by a hash of the full request, so reruns are free and reproducible. If the free daily quota runs out mid-run, the engine stops cleanly; rerun after the reset (midnight Pacific) and it resumes from the cache.
 
+## Run the console
+
+```bash
+.venv/bin/uvicorn console.app:app --reload      # http://127.0.0.1:8000
+```
+
+Loads `engine_out/report_rows.json` (or `results.json`) plus `engine_out/audits.json` and `unreported_findings.json`. If no engine output exists it loads a **demo set built from my hand labels** and shows a "DEMO DATA" banner. State and the audit log live in SQLite (`CONSOLE_DB`, default `console/console.db`). **On Render's free tier the disk is ephemeral: the audit log resets on every redeploy or restart.** The Reset button restores the precomputed state (set `CONSOLE_ALLOW_RESET=0` to disable). There is no login: actions only change the console's own copy of the data, never Acadza's database.
+
+Keys: `J`/`K` next/previous, `A` approve, `R` reject, `E` edit, `U` undo. `#q=<questionId>` in the URL opens a question directly.
+
 ## Notes
 
 - **Free-tier data use.** The default provider is the Gemini API free tier. Google's pricing page states that free-tier content is used to improve Google's products. The inputs here are question-bank content and anonymised student comments; for production traffic use a paid tier (content not used) or the Anthropic switch.
