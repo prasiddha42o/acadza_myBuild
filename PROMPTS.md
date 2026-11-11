@@ -164,7 +164,9 @@ _Only real ones are logged here._
 
 1. **Stage 1, option parser.** The option parser stopped at the first missing letter, so on the question with option D missing the lint reported "missing A,B,C,D" instead of "missing D". The first test only asserted that a missing-option finding existed, so it passed for the wrong reason. Caught by printing lint output for all 43 questions and reading it against my hand analysis (not by the green test run). Fix: skip absent letters instead of stopping; the test now asserts the detail is exactly "missing D".
 2. **Stage 2, the R011 prediction.** In the Stage 2 plan the AI said the new "inserted numbers must appear in the stored solution" guard would let R011 (`(C) 1 : 1`) auto-apply while sending R009/R010 to faculty. When the guard ran against gold, R011 failed: its solution only contains `F12` and `F21`, and the number tokeniser reads those as 12 and 21, not 1. Caught by the existing gold-policy test (`test_gold_routes_match_policy`), not by reasoning. Kept the stricter number-level check (fails closed); R011 is now a documented engine-vs-gold exception (`STRICTER_THAN_GOLD` in the test).
-3. _(open)_
+3. **Stage 3, the diff highlighter.** The AI's `_balanced()` check, which decides whether a changed span can be wrapped in `<mark>`, looked only for a stray `<`. A span starting in the middle of a tag (`b>ab` inside `<b>ab</b>`) passed as "balanced" and would have been wrapped. That produces broken markup in the very view faculty use to judge the fix. Caught by a unit test written for exactly that edge case, which failed on the first run. Fix: after removing whole tags, any leftover `<` or `>` means no inline highlight; the one-line text strip still shows the change.
+
+Smaller misses, also real: a Stage 2 test asserted the R004 solver input must not contain "8225", but 8225 is option B in the stem itself (the test was wrong, not the code). And the first console screenshot showed the question collapsed at the bottom, so a teacher deciding on R009 (missing option D) couldn't see the options without an extra click. Caught by taking headless-Chrome screenshots, not by tests.
 
 ## D. Design decisions log (tried / dropped / why)
 
@@ -199,8 +201,11 @@ _Only real ones are logged here._
 | 27 | **Unreported findings never auto-apply** in the console, even if the guards would pass | Auto-apply like reported fixes | No student corroborated them; the audit raised them unprompted. A human looks first. |
 | 28 | Console builds against a **demo set from my gold labels** until the engine run exists, with a permanent banner | Waiting for the run; fake engine output | Unblocked Stage 3 while the free tier returned 503s. The banner keeps it from being mistaken for results. |
 | 29 | Vanilla JS, every student/AI string inserted as text; only question HTML goes through DOMPurify (HTML + MathML profiles); DOMPurify vendored locally | A framework; CDN script | No build step; nothing a student types can become markup; no third-party script at runtime. |
+| 30 | Render deploy installs **only FastAPI + uvicorn**; `render.yaml` sets Python 3.12, `CONSOLE_DB=/tmp/console.db`, health check `/api/state` | Installing `requirements.txt` (model SDKs, pytest) | The server never calls a model, so a smaller build means fewer things to break. Checked in a clean venv with just those two packages, and compiled with Python 3.11 for syntax. |
+| 31 | Week-1 metric = **undo rate on auto-applied fixes** (target < 2%), read next to time-to-fix | Accuracy vs labels; reports closed per day | It measures the one thing that makes auto-apply dangerous, and gives a direct lever (the confidence bar or per-repair policy). |
+| 32 | Video script and reply email kept in `submission/` (git-ignored) | Committing them | The email has personal answers; the public repo doesn't need them. |
 
 ## E. Open items
 - Stage 2: first real run, eval numbers, guard-rejection count (blocked on Gemini 503s at the time of Stage 3).
 - Stage 3 known gap: a no-change verdict (e.g. AI said no_error) cannot be reopened as a defect from the console.
-- Stage 4: deploy, `PRODUCT.md`, video script, email.
+- Stage 4: run the engine, fill `TODO(run)` in README, deploy, record, send.

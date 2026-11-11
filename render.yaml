@@ -1,0 +1,14 @@
+# Render Blueprint: faculty console only. No model calls at runtime, no API key on the server.
+services:
+  - type: web
+    name: acadza-report-review
+    runtime: python
+    plan: free
+    buildCommand: pip install fastapi uvicorn
+    startCommand: uvicorn console.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/state
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: CONSOLE_DB
+        value: /tmp/console.db      # ephemeral: audit log resets on redeploy/restart (documented)
