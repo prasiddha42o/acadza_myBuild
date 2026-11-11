@@ -1,0 +1,3873 @@
+[
+ {
+  "questionId": "5fc60508028950133eac8963",
+  "subject": "Physics",
+  "chapter": "Newton's law of motion",
+  "type": "integerQuestion",
+  "lint": [
+   {
+    "check": "zero_width",
+    "field": "solution",
+    "detail": "7 zero-width chars"
+   }
+  ],
+  "pre_triage": {
+   "R024": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "20",
+   "missing_info": "",
+   "working": "Normal reaction N = 100 N.\nMaximum static friction = μN = 0.3 × 100 = 30 N.\nDownward force due to gravity = mg = 2 × 10 = 20 N (taking g = 10 m/s²).\nSince mg < μN, the body remains at rest and static friction balances weight.\nThus, frictional force f = mg = 20 N.",
+   "confidence": 0.99,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "20",
+   "missing_info": "",
+   "working": "Normal force N = 100 N.\nMaximum static friction f_max = μN = 0.3 × 100 = 30 N.\nDownward force due to gravity W = mg = 2 × 10 = 20 N (or 19.6 N using g = 9.8).\nSince W ≤ f_max, the body remains static.\nFrictional force f = W = 20 N.",
+   "confidence": 0.98,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "20",
+   "note": "The solution concludes that the frictional force is equal to the weight, which is 20 N."
+  },
+  "normalised": {
+   "a": "20",
+   "b": "20",
+   "concl": "20",
+   "key": "20",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "answer_form",
+    "edit": {
+     "field": "question",
+     "find": "Then the frictional force is equal to",
+     "replace": "Then the frictional force (in N) is equal to"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "Then the frictional force is equal to",
+      "replace": "Then the frictional force (in N) is equal to"
+     }
+    ],
+    "suggestion": "Specify the unit (in N) in the question stem.",
+    "evidence": "The question is an integer question asking for the frictional force, but it does not specify the expected unit (N).",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "answer_form",
+     "edits": [
+      {
+       "field": "question",
+       "find": "Then the frictional force is equal to",
+       "replace": "Then the frictional force (in N) is equal to"
+      }
+     ],
+     "suggestion": "Specify the unit (in N) in the question stem.",
+     "evidence": "The question is an integer question asking for the frictional force, but it does not specify the expected unit (N).",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R024",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The question is an integer question requiring a numeric input but omits the required unit (in N).",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6062ec84518e9535e120c422",
+  "subject": "Physics",
+  "chapter": "Temperature and thermal properties of matter",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R027": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "Linear expansion coefficient: alpha = Delta L / (L0 * Delta T) = 0.19 / (100 * 100) = 1.9 x 10^-5 /°C.\nCoefficient of cubical expansion: gamma = 3 * alpha = 3 * 1.9 x 10^-5 = 5.7 x 10^-5 /°C.",
+   "confidence": 1,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "Linear expansion coefficient ̑: ̑ = ΔL / (L_0 * ΔT)\n̑ = 0.19 cm / (100 cm * 100 °C) = 1.9 x 10^-5 /°C\nCoefficient of cubical expansion γ = 3 * ̑\nγ = 3 * 1.9 x 10^-5 = 5.7 x 10^-5 /°C",
+   "confidence": 1.0,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution calculates the coefficient of cubical expansion as gamma = 5.7 x 10^-5 /C, which matches option A."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R027",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "The question asks for the coefficient of cubical expansion, which is gamma = 3*alpha = 3*(1.9 x 10^-5 /deg C) = 5.7 x 10^-5 /deg C (Option A). Option C is only the coefficient of linear expansion.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "60ca4feb6420652745f55522",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R036": {
+    "hint": "display",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "F = k*q1*q2 / r^2 = 100 N.\nNew charges: q1' = 1.1*q1 and q2' = 0.9*q2.\nNew force F' = k*q1'*q2' / r^2 = (1.1 * 0.9) * F = 0.99 * 100 N = 99 N.",
+   "confidence": 1.0,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "Initial force F1 = k * q1 * q2 / r^2 = 100 N. New charges are q1' = 1.1 * q1 and q2' = 0.9 * q2. New force F2 = k * (1.1 * q1) * (0.9 * q2) / r^2 = 1.1 * 0.9 * F1 = 0.99 * 100 N = 99 N.",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that the new force is 99 N, which corresponds to option C."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R036",
+     "verdict": "display_issue",
+     "defect_id": 0,
+     "evidence": "All four options are fully present in the question HTML; the complaint relates to client-side screen layout or rendering on the student's mobile device.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "60f742f6660d187cc13a8078",
+  "subject": "Physics",
+  "chapter": "Alternating Current and EM Waves",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R007": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   },
+   "R008": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "The numerical value of the inductance is omitted from the question text (typically 95.5 mH).",
+   "working": "The question omits the value of inductance (typically 95.5 mH or 0.1 H in standard textbook problems). Since R = 40 Ω, impedance Z = √(R² + X_L²) must be at least 40 Ω, ruling out 30 Ω. For a standard 3-4-5 right triangle with XL ≈ 30 Ω, Z = √(40² + 30²) = 50 Ω, which matches the phrase 'very nearly'.",
+   "confidence": 0.98,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "The value of the inductance L is missing in the question text. Assuming the standard textbook value of L = 0.1 H or 0.095 H.",
+   "working": "In a series RL circuit, impedance Z = sqrt(R^2 + X_L^2). With R = 40 ohm, f = 50 Hz, and assuming standard textbook inductance L = 0.1 H, X_L = 2*pi*50*0.1 ≈ 31.4 ohm. Thus Z = sqrt(40^2 + 31.4^2) ≈ 50.85 ohm, which is very nearly 50 ohm.",
+   "confidence": 0.95,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that the impedance is 50 ohm, which matches option C."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "stem_data",
+    "edit": {
+     "field": "question",
+     "find": "an inductance are connected",
+     "replace": "an inductance of 95.5 mH are connected"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "an inductance are connected",
+      "replace": "an inductance of 95.5 mH are connected"
+     }
+    ],
+    "suggestion": "Add 'of 95.5 mH' after 'inductance' in the question stem as used in the solution.",
+    "evidence": "The question stem mentions 'an inductance are connected' without specifying its numerical value. The stored solution explicitly uses L = 95.5 × 10⁻³ H (95.5 mH) to calculate Z = 50 ohm.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "stem_data",
+     "edits": [
+      {
+       "field": "question",
+       "find": "an inductance are connected",
+       "replace": "an inductance of 95.5 mH are connected"
+      }
+     ],
+     "suggestion": "Add 'of 95.5 mH' after 'inductance' in the question stem as used in the solution.",
+     "evidence": "The question stem mentions 'an inductance are connected' without specifying its numerical value. The stored solution explicitly uses L = 95.5 × 10⁻³ H (95.5 mH) to calculate Z = 50 ohm.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R007",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly reported that the inductance value was not provided in the question stem.",
+     "confidence": 0.95
+    },
+    {
+     "reportId": "R008",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly noted that necessary data (the inductance) is missing.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "subject": "Physics",
+  "chapter": "Alternating Current and EM Waves",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R001": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   },
+   "R002": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   },
+   "R003": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "Supply voltage V = sqrt(V_R^2 + (V_L - V_C)^2)\nGiven: V_L = 60 V, V_C = 30 V, V_R = 40 V\nV_L - V_C = 60 - 30 = 30 V\nV = sqrt(40^2 + 30^2) = sqrt(1600 + 900) = sqrt(2500) = 50 V\nThus, supply voltage = 50 V",
+   "confidence": 1.0,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "Given V_L = 60 V, V_C = 30 V, and V_R = 40 V in a series LCR circuit.\nSupply voltage V = sqrt(V_R^2 + (V_L - V_C)^2)\nV = sqrt(40^2 + (60 - 30)^2) = sqrt(1600 + 900) = sqrt(2500) = 50 V.",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution concludes that the supply voltage is 50 V, which matches option (A)."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "answer_key",
+    "edit": {
+     "field": "answer",
+     "find": "C",
+     "replace": "A"
+    },
+    "proposed_edits": [
+     {
+      "field": "answer",
+      "find": "",
+      "replace": "A"
+     }
+    ],
+    "suggestion": "Update the answer key to A.",
+    "evidence": "In a series LCR circuit, supply voltage V = sqrt(V_R^2 + (V_L - V_C)^2) = sqrt(40^2 + (60 - 30)^2) = 50 V, which corresponds to option (A).",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": true,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "answer_key",
+     "edits": [
+      {
+       "field": "answer",
+       "find": "",
+       "replace": "A"
+      }
+     ],
+     "suggestion": "Update the answer key to A.",
+     "evidence": "In a series LCR circuit, supply voltage V = sqrt(V_R^2 + (V_L - V_C)^2) = sqrt(40^2 + (60 - 30)^2) = 50 V, which corresponds to option (A).",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R001",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly pointed out that the supply voltage is 50 V (A), which matches the stored solution.",
+     "confidence": 1.0
+    },
+    {
+     "reportId": "R002",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The stored answer key is C (130 V), whereas the correct answer is 50 V (A).",
+     "confidence": 1.0
+    },
+    {
+     "reportId": "R003",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The calculation sqrt(40^2 + 30^2) = 50 V gives option (A); option (C) 130 V incorrectly adds the voltages algebraically.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "612151a6a34397610a9a2e58",
+  "subject": "Physics",
+  "chapter": "Photoelectric effect and matter waves",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R018": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   },
+   "R019": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "Using de-Broglie formula for an electron: λ = 1.227 / sqrt(E) nm.\nGiven λ = 0.3 nm, sqrt(E) = 1.227 / 0.3 = 4.09.\nE = (4.09)^2 ≈ 16.73 eV ≈ 16.8 eV.\nDirectly: E = h^2 / (2m λ^2) = (6.626×10^-34)^2 / [2(9.1×10^-31)(3×10^-10)^2] ≈ 2.68×10^-18 J = 16.75 eV.",
+   "confidence": 1,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. Kinetic energy $E_k = \\frac{h^2}{2 m \\lambda^2}$\n2. Given $\\lambda = 0.3\\text{ nm} = 3 \\times 10^{-10}\\text{ m}$\n3. $E_k = \\frac{(6.63 \\times 10^{-34})^2}{2 \\times 9.1 \\times 10^{-31} \\times (3 \\times 10^{-10})^2} \\approx 2.68 \\times 10^{-18}\\text{ J}$\n4. $E_k = \\frac{2.68 \\times 10^{-18}}{1.6 \\times 10^{-19}}\\text{ eV} \\approx 16.8\\text{ eV}$",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes a final value of 16.8 eV which matches option B."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "solution_fix",
+    "edit": {
+     "field": "solution",
+     "find": "*",
+     "replace": "<p>The de-Broglie wavelength of an electron is given by &lambda; = <i>h</i> / &radic;(2<i>mE</i>), where <i>E</i> is kinetic energy.</p><p>Rearranging for <i>E</i>:<br /><i>E</i> = <i>h</i><sup>2</sup> / (2<i>m</i>&lambda;<sup>2</sup>)</p><p>Substituting <i>h</i> = 6.63 &times; 10<sup>-34</sup> J&sdot;s, <i>m</i> = 9.1 &times; 10<sup>-31</sup> kg, and &lambda; = 0.3 &times; 10<sup>-9</sup> m:<br /><i>E</i> = (6.63 &times; 10<sup>-34</sup>)<sup>2</sup> / [2 &times; 9.1 &times; 10<sup>-31</sup> &times; (0.3 &times; 10<sup>-9</sup>)<sup>2</sup>] &approx; 2.68 &times; 10<sup>-18</sup> J</p><p>Converting to electron-volts:<br /><i>E</i> = (2.68 &times; 10<sup>-18</sup> J) / (1.6 &times; 10<sup>-19</sup> J/eV) &approx; 16.8 eV.</p><p>Hence, the correct option is (B).</p>"
+    },
+    "proposed_edits": [
+     {
+      "field": "solution",
+      "find": "*",
+      "replace": "<p>The de-Broglie wavelength of an electron is given by &lambda; = <i>h</i> / &radic;(2<i>mE</i>), where <i>E</i> is kinetic energy.</p><p>Rearranging for <i>E</i>:<br /><i>E</i> = <i>h</i><sup>2</sup> / (2<i>m</i>&lambda;<sup>2</sup>)</p><p>Substituting <i>h</i> = 6.63 &times; 10<sup>-34</sup> J&sdot;s, <i>m</i> = 9.1 &times; 10<sup>-31</sup> kg, and &lambda; = 0.3 &times; 10<sup>-9</sup> m:<br /><i>E</i> = (6.63 &times; 10<sup>-34</sup>)<sup>2</sup> / [2 &times; 9.1 &times; 10<sup>-31</sup> &times; (0.3 &times; 10<sup>-9</sup>)<sup>2</sup>] &approx; 2.68 &times; 10<sup>-18</sup> J</p><p>Converting to electron-volts:<br /><i>E</i> = (2.68 &times; 10<sup>-18</sup> J) / (1.6 &times; 10<sup>-19</sup> J/eV) &approx; 16.8 eV.</p><p>Hence, the correct option is (B).</p>"
+     }
+    ],
+    "suggestion": "Replace the corrupted solution text with the step-by-step kinetic energy derivation.",
+    "evidence": "The stored solution is corrupted with fragments from an unrelated question (such as '= 5.47 \\AA' and 'h/|I|') before stating 16.8 eV.",
+    "confidence": 0.98,
+    "model_confidence": 0.98,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": true,
+    "edited_solution_concludes": {
+     "answer": "B",
+     "note": "The solution concludes that the kinetic energy is 16.8 eV, which corresponds to option B."
+    }
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "solution_fix",
+     "edits": [
+      {
+       "field": "solution",
+       "find": "*",
+       "replace": "<p>The de-Broglie wavelength of an electron is given by &lambda; = <i>h</i> / &radic;(2<i>mE</i>), where <i>E</i> is kinetic energy.</p><p>Rearranging for <i>E</i>:<br /><i>E</i> = <i>h</i><sup>2</sup> / (2<i>m</i>&lambda;<sup>2</sup>)</p><p>Substituting <i>h</i> = 6.63 &times; 10<sup>-34</sup> J&sdot;s, <i>m</i> = 9.1 &times; 10<sup>-31</sup> kg, and &lambda; = 0.3 &times; 10<sup>-9</sup> m:<br /><i>E</i> = (6.63 &times; 10<sup>-34</sup>)<sup>2</sup> / [2 &times; 9.1 &times; 10<sup>-31</sup> &times; (0.3 &times; 10<sup>-9</sup>)<sup>2</sup>] &approx; 2.68 &times; 10<sup>-18</sup> J</p><p>Converting to electron-volts:<br /><i>E</i> = (2.68 &times; 10<sup>-18</sup> J) / (1.6 &times; 10<sup>-19</sup> J/eV) &approx; 16.8 eV.</p><p>Hence, the correct option is (B).</p>"
+      }
+     ],
+     "suggestion": "Replace the corrupted solution text with the step-by-step kinetic energy derivation.",
+     "evidence": "The stored solution is corrupted with fragments from an unrelated question (such as '= 5.47 \\AA' and 'h/|I|') before stating 16.8 eV.",
+     "confidence": 0.98,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R018",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The stored solution includes extraneous fragments from another problem before arriving at 16.8 eV.",
+     "confidence": 0.95
+    },
+    {
+     "reportId": "R019",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The stored solution mistakenly opens with '5.47 \\AA', which is unrelated to calculating the kinetic energy for lambda = 0.3 nm.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "617fa18efd53ff1629ed890f",
+  "subject": "Botany",
+  "chapter": "Morphology of Flowering Plants",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "exam_reference",
+    "field": "question",
+    "detail": "(NEET 2019)"
+   }
+  ],
+  "pre_triage": {
+   "R013": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "According to NCERT Morphology of Flowering Plants, a typical leaf consists of three parts: leaf base, petiole, and lamina. Lamina (leaf blade) is defined as the green expanded part of the leaf with veins and veinlets.",
+   "confidence": 1,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "The lamina (or leaf blade) is defined in plant morphology as the green, expanded part of the leaf containing veins and veinlets that provide support and transport nutrients.",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution concludes that the green expanded part of the leaf with veins and veinlets is the lamina."
+  },
+  "normalised": {
+   "a": "D",
+   "b": "D",
+   "concl": "D",
+   "key": "D",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "exam_reference",
+    "edit": {
+     "field": "question",
+     "find": "(NEET 2019) ",
+     "replace": ""
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "(NEET 2019) ",
+      "replace": ""
+     }
+    ],
+    "suggestion": "Remove the exam reference '(NEET 2019) ' from the question text.",
+    "evidence": "The question stem contains the stray exam source tag '(NEET 2019) '.",
+    "confidence": 0.98,
+    "model_confidence": 0.98,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "exam_reference",
+     "edits": [
+      {
+       "field": "question",
+       "find": "(NEET 2019) ",
+       "replace": ""
+      }
+     ],
+     "suggestion": "Remove the exam reference '(NEET 2019) ' from the question text.",
+     "evidence": "The question stem contains the stray exam source tag '(NEET 2019) '.",
+     "confidence": 0.98,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R013",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly identified the extraneous exam reference '(NEET 2019)' in the question stem.",
+     "confidence": 0.98
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "61dffbec08489156b684bd22",
+  "subject": "Zoology",
+  "chapter": "Structural Organisation in Animals",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R012": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "The lining of internal organs and cavities, including the small intestine, is formed by epithelial tissue (specifically simple columnar epithelium). Thus, the correct tissue is epithelial tissue.",
+   "confidence": 1.0,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "The lining of internal organs, including the small intestine, is made of epithelial tissue (specifically, simple columnar epithelium with microvilli to increase the surface area for absorption). Therefore, epithelial tissue forms the inner lining of the small intestine.",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution concludes that epithelial tissue is found in the lining of small intestine."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "spelling",
+    "edit": {
+     "field": "question",
+     "find": "Epithellial tisue",
+     "replace": "Epithelial tissue"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "Epithellial tisue",
+      "replace": "Epithelial tissue"
+     }
+    ],
+    "suggestion": "Correct the spelling of 'Epithelial tissue' in option (A).",
+    "evidence": "Option (A) contains typos ('Epithellial tisue' instead of 'Epithelial tissue').",
+    "confidence": 0.99,
+    "model_confidence": 0.99,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "spelling",
+     "edits": [
+      {
+       "field": "question",
+       "find": "Epithellial tisue",
+       "replace": "Epithelial tissue"
+      }
+     ],
+     "suggestion": "Correct the spelling of 'Epithelial tissue' in option (A).",
+     "evidence": "Option (A) contains typos ('Epithellial tisue' instead of 'Epithelial tissue').",
+     "confidence": 0.99,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R012",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Option (A) is misspelled as 'Epithellial tisue' instead of 'Epithelial tissue'.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "61ee6c9d90a1a968a168686b",
+  "subject": "Zoology",
+  "chapter": "Digestion and Absorption",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "zero_width",
+    "field": "solution",
+    "detail": "7 zero-width chars"
+   }
+  ],
+  "pre_triage": {
+   "R022": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "Aggregations of lymphoid tissue in the mucosa/submucosa of the distal small intestine (ileum) are Peyer's patches. Villi are absorptive mucosal projections, rugae are stomach folds, and choroid plexus produces CSF.",
+   "confidence": 1.0,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. Peyer's patches are small masses of lymphatic tissue (lymphoid aggregates) located in the mucosa and submucosa of the distal portion of the small intestine (ileum).\n2. Villi are vascularized projections for nutrient absorption, Rugae are mucosal folds in the stomach, and Choroid plexus is found in the brain.\n3. Therefore, the correct option is (B).",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes that the aggregates of lymphoid tissue in the distal portion of the small intestine are Peyer’s patches."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "spelling",
+    "edit": {
+     "field": "question",
+     "find": "Choroid plexux",
+     "replace": "Choroid plexus"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "Choroid plexux",
+      "replace": "Choroid plexus"
+     }
+    ],
+    "suggestion": "Correct the spelling of 'plexux' to 'plexus' in option (D).",
+    "evidence": "Option (D) in the question text reads '(D) Choroid plexux', misspelling 'plexus'.",
+    "confidence": 0.98,
+    "model_confidence": 0.98,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "spelling",
+     "edits": [
+      {
+       "field": "question",
+       "find": "Choroid plexux",
+       "replace": "Choroid plexus"
+      }
+     ],
+     "suggestion": "Correct the spelling of 'plexux' to 'plexus' in option (D).",
+     "evidence": "Option (D) in the question text reads '(D) Choroid plexux', misspelling 'plexus'.",
+     "confidence": 0.98,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R022",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Option (D) incorrectly spells 'plexus' as 'plexux'.",
+     "confidence": 0.98
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6208e298fa399567e0878700",
+  "subject": "Botany",
+  "chapter": "Photosynthesis in Higher Plants",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R041": {
+    "hint": "gibberish",
+    "short_circuit": true
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "According to NCERT Class 11 Biology, Julius von Sachs provided evidence for the production of glucose when plants grow, which is usually stored as starch.",
+   "confidence": 1,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "According to NCERT Class 11 Biology (Chapter: Photosynthesis in Higher Plants), Julius von Sachs in 1854 provided evidence for the production of glucose when plants grow, and that it is usually stored as starch.",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution concludes that Julius von Sachs provided the evidence."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R041",
+     "verdict": "not_actionable",
+     "defect_id": 0,
+     "evidence": "The student report contains random text ('asdfgh'), and audit confirms option A (Julius von Sachs) is correctly keyed according to NCERT.",
+     "confidence": 0.98
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.6-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6208e80a9cb2ab67dac61bd0",
+  "subject": "Botany",
+  "chapter": "Photosynthesis in Higher Plants",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R017": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "None",
+   "working": "Herbs and shrubs growing under a canopy receive light that has passed through the leaves of taller trees. Chlorophyll absorbs red and blue light efficiently, while green light is transmitted or reflected. Consequently, the light reaching the understory plants is depleted of red and blue wavelengths and relatively enriched in green light, which is less efficient for photosynthesis, leading to a lower rate.",
+   "confidence": 0.95,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "Canopy trees absorb most of the red and blue light from solar radiation. The light filtering through the canopy to herbs and shrubs in the understory is relatively rich in green light. Since green light is least effective for photosynthesis, the rate of photosynthesis in herbs and shrubs is lower compared to sun plants. Thus, option (C) is correct.",
+   "confidence": 1.0,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that herbs and shrubs receive more green light."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R017",
+     "verdict": "already_fixed",
+     "defect_id": 0,
+     "evidence": "The student reported a spelling mistake 'mere' in the options, which was fixed in the faculty edit on 2026-11-07.",
+     "confidence": 0.98
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.6-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "620e23cecc50543bc7db9186",
+  "subject": "Zoology",
+  "chapter": "Evolution",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R026": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "To determine the ancestral state of a trait (character polarity) in a group of organisms, biologists use outgroup comparison. This involves comparing the ingroup (the five snake species) with a closely related taxon that diverged earlier (the outgroup). Option (B) describes this standard phylogenetic method.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "To determine the ancestral state (polarity) of a character in phylogenetics, biologists use outgroup analysis.\nAn outgroup is a taxon that is closely related to the ingroup (the five snake species), such as a more distantly related snake species.\nOption (A) fails because no such fossils exist.\nOption (C) uses an outgroup that is too distantly related to provide meaningful resolution for this specific trait.\nOption (B) correctly describes the method of outgroup comparison.",
+   "confidence": 1.0,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes that the biologist should locate a specimen of a more distantly related snake to see if it has a forked tongue."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 0,
+    "repair": "syllabus",
+    "edit": null,
+    "proposed_edits": [],
+    "suggestion": "Faculty to review whether phylogenetic outgroup comparison is within the current NEET syllabus scope.",
+    "evidence": "The question asks how to distinguish ancestral character state using outgroup comparison, which student reported as out of syllabus for NEET.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "syllabus needs a human by policy"
+    ],
+    "reason_kinds": [
+     "policy"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 0,
+     "repair": "syllabus",
+     "edits": [],
+     "suggestion": "Faculty to review whether phylogenetic outgroup comparison is within the current NEET syllabus scope.",
+     "evidence": "The question asks how to distinguish ancestral character state using outgroup comparison, which student reported as out of syllabus for NEET.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R026",
+     "verdict": "defect",
+     "defect_id": 0,
+     "evidence": "Student reported the question is outside the NEET syllabus; flagged for faculty review under syllabus repair.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.6-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "622df25ab70e4b50e44ff837",
+  "subject": "Physics",
+  "chapter": "Properties of matter and fluid mechanics",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "figure_missing",
+    "field": "question",
+    "detail": "stem refers to a figure; quesImages empty"
+   }
+  ],
+  "pre_triage": {
+   "R025": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "1. The excess pressure inside a soap bubble of radius R is given by ΔP = 4S/R. 2. End 1 has a hemispherical bubble of radius r, so its pressure is P1 = Patm + 4S/r. 3. End 2 has a sub-hemispherical bubble, which means its radius of curvature R2 > r. 4. Thus, the pressure at End 2 is P2 = Patm + 4S/R2. Since R2 > r, P2 < P1. 5. Air flows from higher pressure (End 1) to lower pressure (End 2), causing the volume of the bubble at End 1 to decrease.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. For a spherical cap with base radius $r$, the radius of curvature is $R = \\frac{r^2 + h^2}{2h}$. For a hemisphere ($h=r$), $R_1 = r$. For a sub-hemisphere ($h<r$), $R_2 > r$.\n2. The excess pressure inside a soap bubble is $\\Delta P = \\frac{4T}{R}$. Thus, $\\Delta P_1 = \\frac{4T}{r}$ and $\\Delta P_2 = \\frac{4T}{R_2}$.\n3. Since $R_1 < R_2$, the pressure at end 1 is greater than at end 2 ($P_1 > P_2$).\n4. Therefore, air flows from end 1 to end 2, causing the volume of the bubble at end 1 to decrease.",
+   "confidence": 1.0,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes that air from end 1 flows towards end 2 and the volume of the soap bubble at end 1 decreases."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "diagram",
+    "edit": null,
+    "proposed_edits": [],
+    "suggestion": "Add the missing diagram showing the tube with a hemispherical bubble at end 1 and a sub-hemispherical bubble at end 2.",
+    "evidence": "The question stem states 'as shown in figure', but no figure is provided.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "diagram needs a human by policy"
+    ],
+    "reason_kinds": [
+     "policy"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "diagram",
+     "edits": [],
+     "suggestion": "Add the missing diagram showing the tube with a hemispherical bubble at end 1 and a sub-hemispherical bubble at end 2.",
+     "evidence": "The question stem states 'as shown in figure', but no figure is provided.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R025",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly reported that the figure referenced in the stem is missing.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.6-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "622f08d7b70e4b50e4500a1b",
+  "subject": "Physics",
+  "chapter": "Centre of mass and momentum conservation (collision)",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "option_missing",
+    "field": "question",
+    "detail": "missing D"
+   }
+  ],
+  "pre_triage": {
+   "R009": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   },
+   "R010": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "None",
+   "working": "The velocity of the centre of mass is given by v_cm = (m1*v1 + m2*v2) / (m1 + m2). Given m1 = 10 kg, v1 = 14 m/s, m2 = 4 kg, and v2 = 0 m/s. Substituting these values, v_cm = (10 * 14 + 4 * 0) / (10 + 4) = 140 / 14 = 10 m/s.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "1. Masses: m1 = 10 kg, m2 = 4 kg. Initial velocities: v1 = 14 m/s, v2 = 0.\n2. Formula: v_cm = (m1*v1 + m2*v2) / (m1 + m2).\n3. Calculation: v_cm = (10 * 14 + 4 * 0) / (10 + 4) = 140 / 14 = 10 m/s.\n4. This matches option C.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that the velocity of the centre of mass is 10 m/s, which matches option (C)."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "option_repair",
+    "edit": null,
+    "proposed_edits": [],
+    "suggestion": "Add missing option (D) with an incorrect distractor value.",
+    "evidence": "Options (A), (B), and (C) are present in the question HTML, but option (D) is missing.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "no edit proposed"
+    ],
+    "reason_kinds": [
+     "no_edit"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "option_repair",
+     "edits": [],
+     "suggestion": "Add missing option (D) with an incorrect distractor value.",
+     "evidence": "Options (A), (B), and (C) are present in the question HTML, but option (D) is missing.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R009",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly observed that option D is missing.",
+     "confidence": 1.0
+    },
+    {
+     "reportId": "R010",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly noted that only 3 options are showing.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6263d75bdd44e265ef926d97",
+  "subject": "Physics",
+  "chapter": "Properties of matter and fluid mechanics",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R016": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "20",
+   "missing_info": "None",
+   "working": "Let L be the side of the cube. Case 1: (M_cube + 800)g = rho_w * L^3 * g => M_cube + 800 = L^3. Case 2: M_cube * g = rho_w * L^2 * (L - 2) * g => M_cube = L^2(L - 2). Substituting M_cube: L^2(L - 2) + 800 = L^3 => L^3 - 2L^2 + 800 = L^3 => 2L^2 = 800 => L^2 = 400 => L = 20.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "20",
+   "missing_info": "",
+   "working": "1. Let L be the side of the cube. With 800g mass, M + 800 = L^3. 2. Without mass, M = L^2(L - 2). 3. Subtracting the two gives 800 = 2L^2. 4. Solving for L gives L = 20 cm.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "40",
+   "note": "The solution concludes that the side of the cube is 40 cm."
+  },
+  "normalised": {
+   "a": "20",
+   "b": "20",
+   "concl": "40",
+   "key": "20",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "solution_fix",
+    "edit": {
+     "field": "solution",
+     "find": "*",
+     "replace": "<h3>Let L be the side of the cube. With the 800 g mass, the cube is fully submerged: (M + 800)g = L<sup>3</sup>g. Without the mass, the submerged height is (L - 2) cm, so Mg = L<sup>2</sup>(L - 2)g. Subtracting the two equations gives 800 = 2L<sup>2</sup>, leading to L = 20 cm.</h3>"
+    },
+    "proposed_edits": [
+     {
+      "field": "solution",
+      "find": "*",
+      "replace": "<h3>Let L be the side of the cube. With the 800 g mass, the cube is fully submerged: (M + 800)g = L<sup>3</sup>g. Without the mass, the submerged height is (L - 2) cm, so Mg = L<sup>2</sup>(L - 2)g. Subtracting the two equations gives 800 = 2L<sup>2</sup>, leading to L = 20 cm.</h3>"
+     }
+    ],
+    "suggestion": "",
+    "evidence": "Solvers independently derived L = 20 cm, whereas the stored solution has incorrect math and concludes 40 cm.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": true,
+    "edited_solution_concludes": {
+     "answer": "20",
+     "note": "The solution concludes that the side of the cube is 20 cm."
+    }
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "solution_fix",
+     "edits": [
+      {
+       "field": "solution",
+       "find": "*",
+       "replace": "<h3>Let L be the side of the cube. With the 800 g mass, the cube is fully submerged: (M + 800)g = L<sup>3</sup>g. Without the mass, the submerged height is (L - 2) cm, so Mg = L<sup>2</sup>(L - 2)g. Subtracting the two equations gives 800 = 2L<sup>2</sup>, leading to L = 20 cm.</h3>"
+      }
+     ],
+     "suggestion": "",
+     "evidence": "Solvers independently derived L = 20 cm, whereas the stored solution has incorrect math and concludes 40 cm.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R016",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly highlights the contradiction that the solution says 40 cm while the answer is 20.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6264197209f4fd65f58f5707",
+  "subject": "Zoology",
+  "chapter": "Biotechnology and its Applications",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R040": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "None",
+   "working": "Golden rice is a genetically modified variety of rice engineered to produce beta-carotene, a precursor of Vitamin A, to combat Vitamin A deficiency. Flavr Savr tomato is for delayed ripening, Bt-Brinjal is for pest resistance, and Canola is an oilseed crop.",
+   "confidence": 1.0,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "1. Golden rice is genetically modified to produce beta-carotene (provitamin A). 2. Vitamin A deficiency causes blindness. 3. Consuming Golden rice helps prevent this deficiency. 4. Correct option is C.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that Golden rice prevents vitamin A deficiency and blindness."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "spelling",
+    "edit": [
+     {
+      "field": "solution",
+      "find": "Golden riceis",
+      "replace": "Golden rice is"
+     },
+     {
+      "field": "solution",
+      "find": "producebeta-carotene",
+      "replace": "produce beta-carotene"
+     },
+     {
+      "field": "solution",
+      "find": "precursor ofvitamin A",
+      "replace": "precursor of vitamin A"
+     },
+     {
+      "field": "solution",
+      "find": "helpprevent",
+      "replace": "help prevent"
+     },
+     {
+      "field": "solution",
+      "find": "lead tonight blindness",
+      "replace": "lead to night blindness"
+     }
+    ],
+    "proposed_edits": [
+     {
+      "field": "solution",
+      "find": "Golden riceis",
+      "replace": "Golden rice is"
+     },
+     {
+      "field": "solution",
+      "find": "producebeta-carotene",
+      "replace": "produce beta-carotene"
+     },
+     {
+      "field": "solution",
+      "find": "precursor ofvitamin A",
+      "replace": "precursor of vitamin A"
+     },
+     {
+      "field": "solution",
+      "find": "helpprevent",
+      "replace": "help prevent"
+     },
+     {
+      "field": "solution",
+      "find": "lead tonight blindness",
+      "replace": "lead to night blindness"
+     }
+    ],
+    "suggestion": "Correct spacing and typographical errors in the solution text.",
+    "evidence": "The solution contains multiple spacing and typographical errors such as 'Golden riceis', 'producebeta-carotene', 'precursor ofvitamin A', 'helpprevent', and 'lead tonight blindness'.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "spelling",
+     "edits": [
+      {
+       "field": "solution",
+       "find": "Golden riceis",
+       "replace": "Golden rice is"
+      },
+      {
+       "field": "solution",
+       "find": "producebeta-carotene",
+       "replace": "produce beta-carotene"
+      },
+      {
+       "field": "solution",
+       "find": "precursor ofvitamin A",
+       "replace": "precursor of vitamin A"
+      },
+      {
+       "field": "solution",
+       "find": "helpprevent",
+       "replace": "help prevent"
+      },
+      {
+       "field": "solution",
+       "find": "lead tonight blindness",
+       "replace": "lead to night blindness"
+      }
+     ],
+     "suggestion": "Correct spacing and typographical errors in the solution text.",
+     "evidence": "The solution contains multiple spacing and typographical errors such as 'Golden riceis', 'producebeta-carotene', 'precursor ofvitamin A', 'helpprevent', and 'lead tonight blindness'.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R040",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student report of 'wrong' corresponds to the noticeable typographical and spacing errors present in the solution text.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "636283dbe3770c24f866e6d6",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R043": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "Volume conservation: (4/3)πR³ = 64 * (4/3)πr³, so R = 4r. Charge conservation: Q = 64q. Surface charge density σ = q / (4πr²). σ_bigger = Q / (4πR²) = 64q / (4π(4r)²) = 64q / (64πr²) = q / (πr²). σ_smaller = q / (4πr²). Ratio σ_bigger / σ_smaller = (q / (πr²)) / (q / (4πr²)) = 4.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. Volume conservation: R = N^{1/3}r = (64)^{1/3}r = 4r.\n2. Total charge Q = 64q.\n3. Surface charge density sigma = q/(4\\pi r^2), Sigma = Q/(4\\pi R^2).\n4. Sigma/sigma = (64q)/(16r^2) / (q/r^2) = 4.\n5. Ratio is 4:1, option B.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes a ratio of 4:1 which corresponds to option B."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R043",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Surface charge density ratio is sigma_bigger/sigma_smaller = 4:1, confirming option B is correct and the student misunderstood area versus charge scaling.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "63765a28f1d8416ae0408d89",
+  "subject": "Physics",
+  "chapter": "Nuclear physics and radioactivity",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "markup_leak",
+    "field": "question",
+    "detail": "\\frac"
+   }
+  ],
+  "pre_triage": {
+   "R014": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "None",
+   "working": "Half-life T = 60 days. Fraction remaining = 1 - 7/8 = 1/8. Using the decay formula N = N0(1/2)^(t/T), we have 1/8 = (1/2)^(t/60). Since 1/8 = (1/2)^3, it follows that t/60 = 3, so t = 180 days.",
+   "confidence": 1.0,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "Remaining mass = N0/8 = N0(1/2)^(t/60). Since 1/8 = (1/2)^3, t/60 = 3. Therefore, t = 180 days.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that 3 half-lives equal 180 days, which matches option C."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "markup_leak",
+    "edit": {
+     "field": "question",
+     "find": "\\frac{7}{8}",
+     "replace": "<math display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mn>7</mn></mrow><mrow><mn>8</mn></mrow></mfrac></mrow></mstyle></math>"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "\\frac{7}{8}",
+      "replace": "<math display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mn>7</mn></mrow><mrow><mn>8</mn></mrow></mfrac></mrow></mstyle></math>"
+     }
+    ],
+    "suggestion": "Replace raw LaTeX \\frac{7}{8} with proper MathML.",
+    "evidence": "Raw LaTeX string '\\frac' is visible in the question text as noted by lint and student.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "markup_leak",
+     "edits": [
+      {
+       "field": "question",
+       "find": "\\frac{7}{8}",
+       "replace": "<math display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mn>7</mn></mrow><mrow><mn>8</mn></mrow></mfrac></mrow></mstyle></math>"
+      }
+     ],
+     "suggestion": "Replace raw LaTeX \\frac{7}{8} with proper MathML.",
+     "evidence": "Raw LaTeX string '\\frac' is visible in the question text as noted by lint and student.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R014",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student reported raw LaTeX '\\frac' visible in the question.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "63c7cce12981ed154ee92c94",
+  "subject": "Physics",
+  "chapter": "Geometrical optics and optical instruments",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R042": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "C",
+   "missing_info": "None",
+   "working": "The displacement current I_d is given by I_d = dQ/dt = C(dV/dt). The capacitance C of a parallel plate capacitor with a dielectric is C = (K * epsilon_0 * A) / d. Given K = 10, epsilon_0 = 8.854 * 10^-12 F/m, A = 1 m^2, d = 10^-3 m, and dV/dt = 25 V/s. C = (10 * 8.854 * 10^-12 * 1) / 10^-3 = 8.854 * 10^-8 F. I_d = 8.854 * 10^-8 * 25 = 221.35 * 10^-8 A = 2.2135 * 10^-6 A = 2.2135 microA.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "",
+   "working": "C = K * epsilon_0 * A / d = 10 * 8.85e-12 * 1 / 10^-3 = 8.85e-8 F. Displacement current I_d = C * (dV/dt) = 8.85e-8 * 25 = 2.21e-6 A = 2.2 uA.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "C",
+   "note": "The solution concludes that the displacement current is 2.2 μ A, which corresponds to option C."
+  },
+  "normalised": {
+   "a": "C",
+   "b": "C",
+   "concl": "C",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "wrong_chapter",
+    "edit": null,
+    "proposed_edits": [],
+    "suggestion": "Move this question from Geometrical optics and optical instruments to Electromagnetic Waves.",
+    "evidence": "Displacement current and capacitor charging rate belong to electromagnetic waves, not geometrical optics.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "wrong_chapter needs a human by policy"
+    ],
+    "reason_kinds": [
+     "policy"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "wrong_chapter",
+     "edits": [],
+     "suggestion": "Move this question from Geometrical optics and optical instruments to Electromagnetic Waves.",
+     "evidence": "Displacement current and capacitor charging rate belong to electromagnetic waves, not geometrical optics.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R042",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly points out that displacement current is unrelated to geometrical optics.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "subject": "Zoology",
+  "chapter": "Chemical Coordination and Integration",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R035": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "D",
+   "missing_info": "None",
+   "working": "Parathormone increases blood calcium while Calcitonin decreases it (antagonistic). Insulin decreases blood glucose while Glucagon increases it (antagonistic). Aldosterone increases blood pressure/sodium retention while ANF decreases it (antagonistic). Relaxin relaxes pelvic ligaments and Inhibin inhibits FSH secretion; they have unrelated functions and are not antagonistic.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "1. Parathormone raises blood Ca2+ while Calcitonin lowers it (antagonistic).\n2. Insulin lowers blood glucose while Glucagon raises it (antagonistic).\n3. Aldosterone increases blood pressure/Na+ retention while ANF decreases it (antagonistic).\n4. Relaxin and Inhibin have completely unrelated functions and are not antagonistic.\n5. Therefore, (D) is the correct option.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution concludes that relaxin and inhibin have different functions and are not antagonistic to each other."
+  },
+  "normalised": {
+   "a": "D",
+   "b": "D",
+   "concl": "D",
+   "key": "D",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R035",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Relaxin and inhibin have independent, non-antagonistic physiological roles (relaxin softens pelvic ligaments during childbirth while inhibin inhibits FSH secretion), making option D correct.",
+     "confidence": 0.98
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68c801bc1b1dbc16dc93bf2b",
+  "subject": "Physics",
+  "chapter": "Photoelectric effect and matter waves",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R039": {
+    "hint": "language_request",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "None",
+   "working": "1. Calculate the wavelength of the X-ray of maximum energy: λ_X = hc / (eV) = 12400 eV·Å / 24800 V = 0.5 Å. 2. The de-Broglie wavelength of an electron is λ_e = h / sqrt(2mK_e). 3. Set λ_e = λ_X = 0.5 Å = 0.5 × 10⁻¹⁰ m. 4. Solve for K_e: K_e = h² / (2mλ_X²) = (6.6 × 10⁻³⁴)² / (2 × 9.1 × 10⁻³¹ × (0.5 × 10⁻¹⁰)²) = 9.6 × 10⁻¹⁷ J. 5. Convert to eV: K_e = 9.6 × 10⁻¹⁷ J / 1.6 × 10⁻¹⁹ J/eV = 600 eV.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "1. Maximum energy of X-ray is E = 24800 eV, so its wavelength is lambda = hc/E approx 12400 / 24800 = 0.5 Angstrom.\n2. For an electron, the de-Broglie wavelength is given by lambda = 12.27 / sqrt(V) in Angstroms.\n3. Substituting lambda = 0.5 Angstrom, we get 0.5 = 12.27 / sqrt(V), giving V approx 600 V, so kinetic energy is 600 eV.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution concludes that the kinetic energy is approximately 600 eV, which corresponds to option A."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R039",
+     "verdict": "language_mode",
+     "defect_id": 0,
+     "evidence": "The student requested the question in Hindi, which is a language mode request.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68c8153cfb6b2f16e2d3ceaf",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "mcq",
+  "lint": [
+   {
+    "check": "answer_malformed",
+    "field": "answer",
+    "detail": "['A, B, D']"
+   },
+   {
+    "check": "mcq_single_key",
+    "field": "answer",
+    "detail": "mcq with one key; may be scq"
+   }
+  ],
+  "pre_triage": {
+   "R020": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A,B,D",
+   "missing_info": "None",
+   "working": "1. Electric field: F=qE. If u is parallel to E, force is parallel to velocity, resulting in a straight line (A correct). If u is perpendicular to E, force is constant and perpendicular to velocity, resulting in a parabolic path (B correct). 2. Magnetic field: F=q(v x B). If u is parallel to B, v x B = 0, so F=0, resulting in a straight line (C incorrect). If u is perpendicular to B, F is centripetal, resulting in a circular path (D correct).",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "A,B,D",
+   "missing_info": "",
+   "working": "A: Force is parallel to velocity, path is straight line (correct). B: Force is constant and perpendicular to velocity, path is a parabola (correct). C: Force is zero when velocity is parallel to magnetic field, path is straight line, not a helix (incorrect). D: Force is perpendicular to velocity and magnetic field, path is a circle (correct).",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "NONE",
+   "note": "The solution is incomplete and does not conclude with any specific options."
+  },
+  "normalised": {
+   "a": "A,B,D",
+   "b": "A,B,D",
+   "concl": "none",
+   "key": "A,B,D",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "answer_key",
+    "edit": {
+     "field": "answer",
+     "find": [
+      "A, B, D"
+     ],
+     "replace": [
+      "A",
+      "B",
+      "D"
+     ]
+    },
+    "proposed_edits": [
+     {
+      "field": "answer",
+      "find": "",
+      "replace": "A, B, D"
+     }
+    ],
+    "suggestion": "Fix the answer key format so student answers matching A, B, and D are evaluated correctly.",
+    "evidence": "The stored answer key was malformed, causing correct submissions to be incorrectly graded.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "answer change needs 2 independent solves + stored solution to agree"
+    ],
+    "reason_kinds": [
+     "checks_disagree"
+    ],
+    "key_checks_agree": false,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "answer_key",
+     "edits": [
+      {
+       "field": "answer",
+       "find": "",
+       "replace": "A, B, D"
+      }
+     ],
+     "suggestion": "Fix the answer key format so student answers matching A, B, and D are evaluated correctly.",
+     "evidence": "The stored answer key was malformed, causing correct submissions to be incorrectly graded.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R020",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student marked A, B, D but received an incorrect grade due to the malformed answer key.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68c9ae5afb6b2f16e2d43b1c",
+  "subject": "Physics",
+  "chapter": "Photoelectric effect and matter waves",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R037": {
+    "hint": "display",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "D",
+   "missing_info": "None",
+   "working": "1. Energy of incident photon E = hc/λ = 12400 eV·Å / 4000 Å = 3.1 eV. 2. Using Einstein's photoelectric equation: K_max = E - Φ = 3.1 eV - 2.0 eV = 1.1 eV. 3. Stopping potential V_s = K_max / e = 1.1 V.",
+   "confidence": 1.0,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "E = hc/lambda = 3.1 eV. Kmax = E - phi = 3.1 - 2.0 = 1.1 eV. V0 = 1.1 V.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution concludes a stopping potential of 1.1 V which matches option (D)."
+  },
+  "normalised": {
+   "a": "D",
+   "b": "D",
+   "concl": "D",
+   "key": "D",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R037",
+     "verdict": "display_issue",
+     "defect_id": 0,
+     "evidence": "Student reports loading performance issue, but question content, answer key, and options are correct.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea577d0cda73d07e9391c",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R044": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "14",
+   "missing_info": "none",
+   "working": "For a uniformly charged sphere of radius R, the potential at the surface is V_surface = kQ/R = 16 V. The potential inside at distance r is V(r) = (kQ/2R^3)(3R^2 - r^2). At r = R/2, V_P = (kQ/2R^3)(3R^2 - R^2/4) = (kQ/2R^3)(11R^2/4) = 11kQ/8R = (11/8) * 16 = 22 V. The potential outside at distance r is V(r) = kQ/r. At r = 2R, V_S = kQ/2R = (1/2) * 16 = 8 V. The potential difference V_P - V_S = 22 - 8 = 14 V.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "14",
+   "missing_info": "",
+   "working": "V_surf = KQ/R = 16 V. V_P at r=R/2 is (KQ/2R^3)(3R^2 - R^2/4) = 11/8 KQ = 22 V. V_S at r=2R is KQ/(2R) = 8 V. Potential difference V_P - V_S = 22 - 8 = 14 V.",
+   "confidence": 0.99,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "14",
+   "note": "The solution concludes that the potential difference is 14 V."
+  },
+  "normalised": {
+   "a": "14",
+   "b": "14",
+   "concl": "14",
+   "key": "14",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R044",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "The student calculated the potential at point P as 22 V, but failed to subtract the potential at point S (8 V) to find the requested potential difference (14 V).",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea616d0cda73d07e93ae6",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R005": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "1",
+   "missing_info": "None",
+   "working": "1. Flux from charge q/2 at face center: Φ1 = (1/2) * (q/2) / ε0 = q / (4ε0). 2. Flux from charge 2q at corner: Φ2 = (1/8) * (2q) / ε0 = 2q / (8ε0) = q / (4ε0). 3. Total flux Φ = Φ1 + Φ2 = q / (4ε0) + q / (4ε0) = 2q / (4ε0) = q / (2ε0). 4. Given Φ = nq / (2ε0), comparing gives n = 1.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "1",
+   "missing_info": "",
+   "working": "Face charge flux = (q/2)/(2*epsilon_0) = q/(4*epsilon_0). Corner charge flux = (2q)/(8*epsilon_0) = q/(4*epsilon_0). Total flux = q/(2*epsilon_0) = (nq)/(2*epsilon_0), so n = 1.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "1",
+   "note": "The solution concludes that the total flux is q/(2 epsilon_0), meaning n is 1."
+  },
+  "normalised": {
+   "a": "1",
+   "b": "1",
+   "concl": "1",
+   "key": "2",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "answer_key",
+    "edit": {
+     "field": "answer",
+     "find": "2",
+     "replace": "1"
+    },
+    "proposed_edits": [
+     {
+      "field": "answer",
+      "find": "",
+      "replace": "1"
+     }
+    ],
+    "suggestion": "Change the answer key from 2 to 1.",
+    "evidence": "Both solvers and the stored solution calculate total flux as q / (2 ε0), which equates to n = 1 when compared with nq / (2 ε0).",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": true,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "answer_key",
+     "edits": [
+      {
+       "field": "answer",
+       "find": "",
+       "replace": "1"
+      }
+     ],
+     "suggestion": "Change the answer key from 2 to 1.",
+     "evidence": "Both solvers and the stored solution calculate total flux as q / (2 ε0), which equates to n = 1 when compared with nq / (2 ε0).",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R005",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly solved for n = 1, which is confirmed by the solution's derivation.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea619d0cda73d07e93aee",
+  "subject": "Physics",
+  "chapter": "Rotational Motion",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R031": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "4",
+   "missing_info": "None",
+   "working": "Angular positions are θ1 = (1/2)α1t² = (π/4)t² and θ2 = (1/2)α2t² = (π/8)t². Alignment occurs when θ1 - θ2 = 2nπ for integer n. Thus, (π/4)t² - (π/8)t² = 2nπ, which simplifies to (π/8)t² = 2nπ. Solving for t, t² = 16n, so t = 4√n. For the first time, n=1, giving t = 4 seconds.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "4",
+   "missing_info": "",
+   "working": "theta_1 = 0.5 * (pi/2) * t^2, theta_2 = 0.5 * (pi/4) * t^2. theta_1 - theta_2 = 2pi. (pi/8)t^2 = 2pi => t^2 = 16 => t = 4.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "4",
+   "note": "The solution concludes a time of 4 seconds."
+  },
+  "normalised": {
+   "a": "4",
+   "b": "4",
+   "concl": "4",
+   "key": "4",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R031",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Both independent solvers and the stored solution confirm that t = 4 seconds; the student's claim of 2 seconds is mathematically incorrect.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea657387eea3d0d95f54a",
+  "subject": "Physics",
+  "chapter": "Geometrical optics and optical instruments",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {},
+  "solver_a": {
+   "answer": "5",
+   "missing_info": "None",
+   "working": "1. The combined focal length F of two identical lenses in contact is F = f/2, where f is the focal length of each lens. 2. Using the lens formula 1/v - 1/u = 1/F, with u = -12.5 cm and magnification m = v/u = -4 (for a real image), we get v = -4u = 50 cm. 3. Substituting these into the lens formula: 1/50 - 1/(-12.5) = 1/F, which simplifies to 1/50 + 4/50 = 5/50 = 1/10. 4. Thus, F = 10 cm = 0.1 m. 5. Since F = f/2, f = 20 cm = 0.2 m, and the power P = 1/f = 1/0.2 = 5 dioptres.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "5",
+   "missing_info": "",
+   "working": "v = m*u = -4 * (-12.5) = 50 cm. 1/F = 1/v - 1/u = 1/50 - (-1/12.5) = 1/10 cm^-1. F = 10 cm = 0.1 m. P_eq = 1/0.1 = 10 D. Since P_eq = 2P, P = 5 D.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "5",
+   "note": "The solution concludes that the optical power of each lens is 5D."
+  },
+  "normalised": {
+   "a": "5",
+   "b": "5",
+   "concl": "5",
+   "key": "5",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": []
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea6e6387eea3d0d95f6f8",
+  "subject": "Physics",
+  "chapter": "Geometrical optics and optical instruments",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {},
+  "solver_a": {
+   "answer": "16",
+   "missing_info": "None",
+   "working": "The distance between the source and screen is D = 150 cm and the focal length is f = 24 cm. The two positions of the lens are given by the quadratic equation x^2 - Dx + fD = 0, where x is the object distance. Substituting the values: x^2 - 150x + 3600 = 0. Solving for x: x = (150 ± sqrt(150^2 - 4 * 3600)) / 2 = (150 ± sqrt(22500 - 14400)) / 2 = (150 ± 90) / 2. The two positions are u1 = 30 cm and u2 = 120 cm. The magnifications are m1 = v1/u1 = 120/30 = 4 and m2 = v2/u2 = 30/120 = 1/4. The ratio of the sizes of the two images is m1/m2 = 4 / (1/4) = 16.",
+   "confidence": 1.0,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "16",
+   "missing_info": "",
+   "working": "1. Distance D = 150 cm, focal length f = 24 cm.\n2. Lens equation yields u^2 - Du + fD = 0 => u^2 - 150u + 3600 = 0.\n3. Solving gives u1 = 30 cm and u2 = 120 cm.\n4. Magnifications are m1 = v1/u1 = 120/30 = 4 and m2 = v2/u2 = 30/120 = 1/4.\n5. Ratio of image sizes = m1/m2 = 4 / (1/4) = 16.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "16",
+   "note": "The solution concludes with the ratio of the sizes of the two images as 16."
+  },
+  "normalised": {
+   "a": "16",
+   "b": "16",
+   "concl": "16",
+   "key": "16",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": []
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea715387eea3d0d95f790",
+  "subject": "Physics",
+  "chapter": "Units and dimensions",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R033": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "3113",
+   "missing_info": "None",
+   "working": "The side length s = 7.203 m has 4 significant digits. The surface area A = 6s^2 = 6 * (7.203)^2 = 6 * 51.883209 = 311.299254 m^2. Following the rule for significant digits in multiplication, the result should have 4 significant digits, so A = 311.3 m^2. Then 10A = 10 * 311.3 = 3113.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "3113",
+   "missing_info": "",
+   "working": "Side a = 7.203 m (4 significant figures). Area A = 6a^2 = 6 * (7.203)^2 = 311.299... m^2. Rounding to 4 significant figures gives A = 311.3 m^2. Thus, 10A = 3113.",
+   "confidence": 0.99,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "3113",
+   "note": "The solution concludes a surface area of 311.3, so 10 A is 3113."
+  },
+  "normalised": {
+   "a": "3113",
+   "b": "3113",
+   "concl": "3113",
+   "key": "3113",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R033",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "The question specifies considering correct significant digits; 7.203 has 4 significant figures, so A rounds to 311.3 m^2 and 10A equals 3113.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea7c2387eea3d0d95f9bb",
+  "subject": "Physics",
+  "chapter": "Wave optics",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R032": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "8",
+   "missing_info": "None",
+   "working": "The path difference introduced by a slab of thickness t and refractive index μ is Δx = (μ - 1)t. With two slabs in front of the two slits, the net path difference is Δx = |(μ1 - 1)t1 - (μ2 - 1)t2|. Given D = 1 m, d = 5 mm = 5 × 10^-3 m, t1 = 2 mm = 2 × 10^-3 m, μ1 = 1.5, t2 = 1.5 mm = 1.5 × 10^-3 m, μ2 = 1.4. Δx = |(1.5 - 1)(2 × 10^-3) - (1.4 - 1)(1.5 × 10^-3)| = |0.5(2 × 10^-3) - 0.4(1.5 × 10^-3)| = |1 × 10^-3 - 0.6 × 10^-3| = 0.4 × 10^-3 m. The shift of the central maxima is y = (D/d)Δx = (1 / 5 × 10^-3) * 0.4 × 10^-3 = 0.4 / 5 = 0.08 m = 8 cm.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "8",
+   "missing_info": "",
+   "working": "Shift y = (D/d) * [(mu_1 - 1)t_1 - (mu_2 - 1)t_2] = (100 / 0.5) * [(1.5 - 1)*0.2 - (1.4 - 1)*0.15] = 200 * [0.1 - 0.06] = 200 * 0.04 = 8 cm.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "8",
+   "note": "The solution reaches a final shift of 0.08 m which is 8 cm."
+  },
+  "normalised": {
+   "a": "8",
+   "b": "8",
+   "concl": "8",
+   "key": "8",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R032",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "The question explicitly asks for the shift in cm; 0.08 m converts to 8 cm, making the stored answer key 8 correct.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68dea87d387eea3d0d95fbe3",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {},
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "None",
+   "working": "1. Initial charge on the charged capacitor is Q_total = C_0 * V_0 = 30 * C_0. 2. When connected in parallel, the final potential V_f is the same for both. 3. The charge on the first capacitor is Q_1 = C(V_f) * V_f = (K * C_0) * V_f = (alpha * V_f * C_0) * V_f = alpha * C_0 * V_f^2. 4. The charge on the second capacitor is Q_2 = C_0 * V_f. 5. By conservation of charge, Q_1 + Q_2 = Q_total => alpha * C_0 * V_f^2 + C_0 * V_f = 30 * C_0. With alpha = 1, V_f^2 + V_f - 30 = 0 => (V_f - 5)(V_f + 6) = 0. Thus, V_f = 5 V.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "Charge on first capacitor is q1 = C1*V = alpha*C0*V^2. Charge on second is q2 = C0*V. By charge conservation, C0*V0 = alpha*C0*V^2 + C0*V. With alpha=1 and V0=30, V^2 + V - 30 = 0, yielding V = 5 V.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution concludes that the final potential drop is V = 5 volt, which corresponds to option A."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": []
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68e870ef42c06737d6e565c4",
+  "subject": "Physics",
+  "chapter": "Kinetic theory of gases",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R004": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "Formula: P = (1/3) * rho * v_rms^2\nGiven: rho = 9 * 10^(-2) kg/m^3, v_rms = 400 m/s\nP = (1/3) * (9 * 10^(-2)) * (400)^2\nP = 3 * 10^(-2) * 160000 = 4800 N/m^2",
+   "confidence": 1,
+   "model": "gemini-3.8-flash"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "The formula for the pressure exerted by a gas is P = (1/3) * ρ * v_rms^2.\nGiven: ρ = 9 × 10^-2 kg/m^3 and v_rms = 400 m/s.\nSubstituting values: P = (1/3) × (9 × 10^-2) × (400)^2\nP = 3 × 10^-2 × 160000 = 4800 N/m^2.",
+   "confidence": 1,
+   "model": "gemini-3.6-flash"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution calculates the pressure as 4800 N/m^2 which corresponds to option D."
+  },
+  "normalised": {
+   "a": "D",
+   "b": "D",
+   "concl": "D",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "answer_key",
+    "edit": {
+     "field": "answer",
+     "find": "A",
+     "replace": "D"
+    },
+    "proposed_edits": [
+     {
+      "field": "answer",
+      "find": "",
+      "replace": "D"
+     }
+    ],
+    "suggestion": "Update the stored answer key from A to D.",
+    "evidence": "Pressure P = (1/3) * rho * (v_rms)^2 = (1/3) * (9 * 10^-2 kg/m^3) * (400 m/s)^2 = 4800 N/m^2, which matches option (D). Both solvers and the stored solution conclude D.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": true,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "answer_key",
+     "edits": [
+      {
+       "field": "answer",
+       "find": "",
+       "replace": "D"
+      }
+     ],
+     "suggestion": "Update the stored answer key from A to D.",
+     "evidence": "Pressure P = (1/3) * rho * (v_rms)^2 = (1/3) * (9 * 10^-2 kg/m^3) * (400 m/s)^2 = 4800 N/m^2, which matches option (D). Both solvers and the stored solution conclude D.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R004",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly reported that the answer key is wrong (stored as A), although the correct answer is 4800 N/m^2 (D), not 8225.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.8-flash",
+   "solver_b": "gemini-3.6-flash",
+   "auditor": "gemini-3.8-flash"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68e872546e45ba37dcc16bc0",
+  "subject": "Physics",
+  "chapter": "Electrostatics",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "option_blank",
+    "field": "question",
+    "detail": "C"
+   }
+  ],
+  "pre_triage": {
+   "R011": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "1:1",
+   "missing_info": "The option 1:1 is missing from the provided choices.",
+   "working": "According to Coulomb's Law and Newton's Third Law, the force exerted by charge q1 on charge q2 is equal in magnitude and opposite in direction to the force exerted by charge q2 on charge q1. Thus, the ratio of the magnitudes of the forces is 1:1. None of the provided options (A, B, D) represent this ratio.",
+   "confidence": 1.0,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "C",
+   "missing_info": "The text for option C is missing in the HTML, but it represents the value 1:1.",
+   "working": "By Newton's third law, the electrostatic forces exerted by two charges on each other are equal in magnitude and opposite in direction. Thus, the ratio of the coulombic forces acting on them is always 1:1. Option C corresponds to 1:1.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "NONE",
+   "note": "The solution concludes that the magnitudes of the forces are equal, so the ratio is 1:1, which matches no option."
+  },
+  "normalised": {
+   "a": "none",
+   "b": "C",
+   "concl": "none",
+   "key": "C",
+   "solvers_independent": true,
+   "solvers_agree": false
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "option_repair",
+    "edit": {
+     "field": "question",
+     "find": "(C) <br />",
+     "replace": "(C) <math display=\"inline\"><mrow><mn> 1 </mn><mi>:</mi><mn> 1 </mn></mrow></math><br />"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "(C) <br />",
+      "replace": "(C) <math display=\"inline\"><mrow><mn> 1 </mn><mi>:</mi><mn> 1 </mn></mrow></math><br />"
+     }
+    ],
+    "suggestion": "Fill option C with 1:1.",
+    "evidence": "Option C is blank in the question HTML.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "inserted value(s) ['1', '1'] not found anywhere in the stored solution"
+    ],
+    "reason_kinds": [
+     "inserted_value_unseen"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "option_repair",
+     "edits": [
+      {
+       "field": "question",
+       "find": "(C) <br />",
+       "replace": "(C) <math display=\"inline\"><mrow><mn> 1 </mn><mi>:</mi><mn> 1 </mn></mrow></math><br />"
+      }
+     ],
+     "suggestion": "Fill option C with 1:1.",
+     "evidence": "Option C is blank in the question HTML.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R011",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly noted that option C is blank.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68e8734442c06737d6e56da4",
+  "subject": "Physics",
+  "chapter": "Newton's law of motion",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R029": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "None",
+   "working": "Mass m = W/g = 100/10 = 10 kg. Equations of motion: F - μmg = ma1 => F - 100μ = 10(1) = 10. 2F - μmg = ma2 => 2F - 100μ = 10(10) = 100. Subtracting the first from the second: (2F - 100μ) - (F - 100μ) = 100 - 10 => F = 90 N. Substituting F = 90 into the first equation: 90 - 100μ = 10 => 100μ = 80 => μ = 0.8.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "m = W/g = 10 kg; F - \\mu N = m a_1 => F - 100\\mu = 10; 2F - 100\\mu = 100; subtracting gives F = 90 N; then \\mu = 0.8.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution reaches the value ̆̇̈0.8, which corresponds to option A."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R029",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Calculations show m = 10 kg, F = 90 N, and mu = 0.8. Doubling F gives 2F - 100(0.8) = 100, so a = 10 m/s^2, confirming option A is correct.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68ecbacb2ec87a18deba1ad7",
+  "subject": "Botany",
+  "chapter": "The Living World",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R023": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "The absolute refractory period is the interval during which a second action potential cannot be initiated. This is primarily due to the inactivation of voltage-gated Na+ channels, which remain in an inactivated state until the membrane potential repolarizes, preventing further Na+ influx.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. ARP prevents another action potential from firing. 2. It is caused by the inactivation of voltage-gated Na+ channels. 3. These channels cannot open until they reset from their inactivated state. 4. Therefore, (B) is the correct option.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes that the absolute refractory period is due to the inactivation of voltage-gated Na+ channels, which corresponds to option B."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "wrong_chapter",
+    "edit": null,
+    "proposed_edits": [],
+    "suggestion": "Move question to the Neural Control and Coordination chapter.",
+    "evidence": "Action potential generation and refractory periods belong to Neural Control and Coordination, not The Living World.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "wrong_chapter needs a human by policy"
+    ],
+    "reason_kinds": [
+     "policy"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "wrong_chapter",
+     "edits": [],
+     "suggestion": "Move question to the Neural Control and Coordination chapter.",
+     "evidence": "Action potential generation and refractory periods belong to Neural Control and Coordination, not The Living World.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R023",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly noted that this question belongs to the neural control chapter rather than The Living World.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68f21caf941cda588bc04365",
+  "subject": "Physics",
+  "chapter": "Mathematics in physics",
+  "type": "mcq",
+  "lint": [
+   {
+    "check": "answer_malformed",
+    "field": "answer",
+    "detail": "['', 'B']"
+   },
+   {
+    "check": "mcq_stem_not_multi",
+    "field": "questionType",
+    "detail": "stem does not say multiple answers"
+   }
+  ],
+  "pre_triage": {
+   "R021": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "Using the radioactive decay law N(t) = N0 * exp(-λt), we have 6 * 10^23 = 48 * 10^23 * exp(-λ * 3). This simplifies to 1/8 = exp(-3λ), or 8 = exp(3λ). Taking the natural logarithm, ln(8) = 3λ, so 3 * ln(2) = 3λ, which gives λ = ln(2) min^-1. The mean life τ is 1/λ = 1/ln(2) ≈ 1/0.693 ≈ 1.44 min.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. N0 = 48x10^23, N(t) = 6x10^23 at t = 3 min. 2. N(t)/N0 = 1/8 = (1/2)^3, giving half-life T_1/2 = 1 min. 3. Mean life tau = T_1/2 / ln(2) = 1 / 0.6931 approx 1.44 min. 4. Option B is correct.",
+   "confidence": 0.99,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution calculates the mean life as approximately 1.44 min, which matches option B."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "type_mismatch",
+    "edit": [
+     {
+      "field": "questionType",
+      "find": "mcq",
+      "replace": "scq"
+     },
+     {
+      "field": "answer",
+      "find": [
+       "",
+       "B"
+      ],
+      "replace": "B"
+     }
+    ],
+    "proposed_edits": [
+     {
+      "field": "questionType",
+      "find": "",
+      "replace": "scq"
+     },
+     {
+      "field": "answer",
+      "find": "",
+      "replace": "B"
+     }
+    ],
+    "suggestion": "Change question type to scq and set answer key to B.",
+    "evidence": "Only option B is correct (tau = 1.44 min), but the question was incorrectly stored as an mcq with a malformed key.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": true,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "type_mismatch",
+     "edits": [
+      {
+       "field": "questionType",
+       "find": "",
+       "replace": "scq"
+      },
+      {
+       "field": "answer",
+       "find": "",
+       "replace": "B"
+      }
+     ],
+     "suggestion": "Change question type to scq and set answer key to B.",
+     "evidence": "Only option B is correct (tau = 1.44 min), but the question was incorrectly stored as an mcq with a malformed key.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R021",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student correctly noted that only B is correct and the question type caused negative marking due to multiple-correct storage.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "68f21df0941cda588bc0470b",
+  "subject": "Physics",
+  "chapter": "Work, power and energy",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R038": {
+    "hint": "app_behaviour",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "A",
+   "missing_info": "None",
+   "working": "Kinetic energy K = p^2 / (2m), where p is momentum and m is mass. Given K_new = 4 * K_initial. Substituting, p_new^2 / (2m) = 4 * (p_initial^2 / (2m)). This simplifies to p_new^2 = 4 * p_initial^2. Taking the square root, p_new = 2 * p_initial.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "A",
+   "missing_info": "",
+   "working": "1. Kinetic energy K is given by p^2 / (2m).\n2. If K becomes 4 times, (p')^2 = 4p^2.\n3. Taking square root, p' = 2p.\n4. Thus, momentum becomes twice its initial value.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "A",
+   "note": "The solution concludes that the momentum becomes two times its initial value, which corresponds to option (A)."
+  },
+  "normalised": {
+   "a": "A",
+   "b": "A",
+   "concl": "A",
+   "key": "A",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R038",
+     "verdict": "app_issue",
+     "defect_id": 0,
+     "evidence": "Student states I clicked A but it saved B, which describes a platform submission issue rather than an error in the question content. Solvers and stored solution confirm option A is correct.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6956d79788d7701e5617bc29",
+  "subject": "Physics",
+  "chapter": "AC Circuits",
+  "type": "scq",
+  "lint": [
+   {
+    "check": "option_duplicate",
+    "field": "question",
+    "detail": "B/C"
+   }
+  ],
+  "pre_triage": {
+   "R015": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "The voltage is e = 200 sin(100t) and the current is i = 5 sin(100t - π/2). The phase difference φ between voltage and current is π/2 (or 90°). The average power consumption in an AC circuit is given by P = V_rms * I_rms * cos(φ). Since cos(90°) = 0, the power consumption is P = 0 W.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. Peak voltage E_0 = 200 V, peak current I_0 = 5 A. 2. Phase difference between voltage and current is phi = pi/2. 3. Average power P = (1/2) * E_0 * I_0 * cos(phi) = 0 W.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes that the power consumption is 0 W, corresponding to option B."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "identical_options",
+    "edit": null,
+    "proposed_edits": [],
+    "suggestion": "Option B and C are both 0 W. Change option C to a distinct incorrect value.",
+    "evidence": "Options B and C are identical with the text '0 W'.",
+    "confidence": 1.0,
+    "model_confidence": 1.0,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "identical_options needs a human by policy"
+    ],
+    "reason_kinds": [
+     "policy"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "identical_options",
+     "edits": [],
+     "suggestion": "Option B and C are both 0 W. Change option C to a distinct incorrect value.",
+     "evidence": "Options B and C are identical with the text '0 W'.",
+     "confidence": 1.0,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R015",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "Student accurately reported that options B and C are identical.",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6956d7bb23cb221e570d6013",
+  "subject": "Physics",
+  "chapter": "Motion in a Plane",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R028": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "The horizontal range R = (u^2 sin(2θ))/g = (2u^2 sinθ cosθ)/g. The maximum height H = (u^2 sin^2θ)/(2g). Setting R = H gives (2u^2 sinθ cosθ)/g = (u^2 sin^2θ)/(2g). Simplifying, 2 cosθ = (sinθ)/2, which leads to sinθ/cosθ = 4, so tanθ = 4. Thus, θ = tan^-1(4).",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "B",
+   "missing_info": "",
+   "working": "1. Write the formulas for range R = u^2 sin(2θ)/g and height H = u^2 sin^2(θ)/(2g). 2. Equate R = H to get 2 sin(θ) cos(θ) = sin^2(θ)/2. 3. Simplify to find tan(θ) = 4, so θ = tan^(-1)(4). 4. Option (B) is the correct choice.",
+   "confidence": 1,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "B",
+   "note": "The solution concludes with tan^{-1}(4), which corresponds to option (B)."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "B",
+   "concl": "B",
+   "key": "B",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R028",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Range and height equality formula yields tan theta = 4, so theta = tan^-1(4), matching option B. The student incorrectly claimed tan^-1(2).",
+     "confidence": 1.0
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "6956d7e988d7701e5617bd3e",
+  "subject": "Physics",
+  "chapter": "Oscillations",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R030": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "D",
+   "missing_info": "None",
+   "working": "The displacement equation for SHM starting from equilibrium is x(t) = A sin(ωt). The velocity is v(t) = dx/dt = Aω cos(ωt). Given T = 16 s, ω = 2π/T = 2π/16 = π/8 rad/s. At t = 2 s, v(2) = A(π/8) cos(π/8 * 2) = A(π/8) cos(π/4) = A(π/8)(1/√2). Setting v(2) = π, we get π = A(π/8)(1/√2), which simplifies to 1 = A/(8√2), so A = 8√2 m.",
+   "confidence": 1,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "1. Angular frequency omega = 2pi/T = 2pi/16 = pi/8 rad/s.\n2. Since the particle starts from the equilibrium position, x(t) = A sin(omega t), and velocity v(t) = A omega cos(omega t).\n3. At t = 2 s, v = A (pi/8) cos(pi/4) = pi.\n4. Solving for A gives A = 8 sqrt(2) m.",
+   "confidence": 1.0,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution concludes that the amplitude is 8 sqrt(2) m, which matches option (D)."
+  },
+  "normalised": {
+   "a": "D",
+   "b": "D",
+   "concl": "D",
+   "key": "D",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "spelling",
+    "edit": {
+     "field": "question",
+     "find": "starts equilibrium position",
+     "replace": "starts from equilibrium position"
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "starts equilibrium position",
+      "replace": "starts from equilibrium position"
+     }
+    ],
+    "suggestion": "Add missing preposition 'from'.",
+    "evidence": "The phrase 'starts equilibrium position' is missing the word 'from'.",
+    "confidence": 0.98,
+    "model_confidence": 0.98,
+    "reported": false,
+    "route": "auto_apply",
+    "reasons": [],
+    "reason_kinds": [],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "spelling",
+     "edits": [
+      {
+       "field": "question",
+       "find": "starts equilibrium position",
+       "replace": "starts from equilibrium position"
+      }
+     ],
+     "suggestion": "Add missing preposition 'from'.",
+     "evidence": "The phrase 'starts equilibrium position' is missing the word 'from'.",
+     "confidence": 0.98,
+     "reported": false
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R030",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Solvers and stored solution confirm the amplitude is 8 sqrt(2) m; the student's claim of 4 root 2 is incorrect.",
+     "confidence": 0.99
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "695ede2a88d7701e561aa9d9",
+  "subject": "Zoology",
+  "chapter": "Excretory Products and their Elimination",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {},
+  "solver_a": {
+   "answer": "B",
+   "missing_info": "None",
+   "working": "Statement-I is correct as dialysis is commonly used as a bridge or holding measure for patients awaiting a kidney transplant. Statement-II is also correct because for some patients, dialysis may not be a viable or appropriate supportive measure due to other severe health conditions or contraindications, even if a transplant is also not an option. Thus, both statements are correct.",
+   "confidence": 0.95,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "1. Statement-I is verbatim from NCERT: dialysis is a 'holding measure' until renal transplant. 2. Statement-II is incorrect because dialysis is a supportive measure for patients who cannot receive a transplant. 3. Thus, Statement-I is correct and Statement-II is incorrect.",
+   "confidence": 0.99,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution concludes that Statement-I is correct but Statement-II is incorrect, matching option D."
+  },
+  "normalised": {
+   "a": "B",
+   "b": "D",
+   "concl": "D",
+   "key": "D",
+   "solvers_independent": true,
+   "solvers_agree": false
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": []
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "695ee00b88d7701e561aabc5",
+  "subject": "Physics",
+  "chapter": "Waves",
+  "type": "scq",
+  "lint": [],
+  "pre_triage": {
+   "R034": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "D",
+   "missing_info": "None",
+   "working": "The resultant intensity of two interfering waves is given by I = I1 + I2 + 2*sqrt(I1*I2)*cos(phi). For equal amplitudes, I1 = I2 = I0, so I = 2*I0 + 2*I0*cos(phi). With a phase difference of phi = pi/2, cos(pi/2) = 0, so I = 2*I0. The assertion states I = I0, which is false. The reason states that the resultant intensity is always the sum of individual intensities if the phase difference is non-zero, which is also false (it is only the sum when cos(phi) = 0). Given the options, this question appears to be a corrupted version of a standard question where both statements are true, but based on the provided text, both are false.",
+   "confidence": 0.4,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "D",
+   "missing_info": "",
+   "working": "Intensity of two interfering waves is $I = I_1 + I_2 + 2\\sqrt{I_1 I_2}\\cos\\phi$. For equal amplitudes ($I_1=I_2=I_0$) and $\\phi = \\frac{\\pi}{2}$, $I = 2I_0 \\neq I_0$. Thus, Assertion (A) is false. By elimination, the only option where A is false is (D).",
+   "confidence": 0.95,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "D",
+   "note": "The solution concludes that the correct answer is (d), as assertion (A) is false but reason (R) is true."
+  },
+  "normalised": {
+   "a": "D",
+   "b": "D",
+   "concl": "D",
+   "key": "D",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [],
+   "reports": [
+    {
+     "reportId": "R034",
+     "verdict": "no_error",
+     "defect_id": 0,
+     "evidence": "Resultant intensity of two waves with equal amplitude and pi/2 phase difference is 2I0, making Assertion (A) false as confirmed by both independent solvers.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ },
+ {
+  "questionId": "696a866665252c04fc1f81c2",
+  "subject": "Physics",
+  "chapter": "Properties of matter and fluid mechanics",
+  "type": "integerQuestion",
+  "lint": [],
+  "pre_triage": {
+   "R006": {
+    "hint": "needs_audit",
+    "short_circuit": false
+   }
+  },
+  "solver_a": {
+   "answer": "50",
+   "missing_info": "The side length of the copper cube is not provided in the question, but it is assumed to be 10 cm based on standard versions of this problem.",
+   "working": "The bulk modulus B is defined as B = -ΔP / (ΔV/V), so the volume contraction |ΔV| = V * ΔP / B. Assuming the standard side length of 10 cm for this problem, V = (10 cm)^3 = 1000 cm^3 = 10^6 mm^3. Given ΔP = 7 * 10^6 Pa and B = 1.4 * 10^11 Pa, |ΔV| = (10^6 mm^3 * 7 * 10^6 Pa) / (1.4 * 10^11 Pa) = 50 mm^3.",
+   "confidence": 0.95,
+   "model": "gemini-3.1-flash-lite"
+  },
+  "solver_b": {
+   "answer": "50",
+   "missing_info": "The edge length or initial volume of the copper cube is missing from the question text.",
+   "working": "1. Formula: delta V = PV / B. 2. Assuming edge length = 10 cm gives V = 10^-3 m^3. 3. delta V = (7 x 10^6 * 10^-3) / (1.4 x 10^11) = 5 x 10^-8 m^3. 4. Converting to mm^3 gives 50 mm^3.",
+   "confidence": 0.95,
+   "model": "gemini-3.5-flash-lite"
+  },
+  "solution_concludes": {
+   "answer": "50",
+   "note": "The solution concludes a volume contraction of 50 mm^3."
+  },
+  "normalised": {
+   "a": "50",
+   "b": "50",
+   "concl": "50",
+   "key": "50",
+   "solvers_independent": true,
+   "solvers_agree": true
+  },
+  "defects": [
+   {
+    "id": 1,
+    "repair": "stem_data",
+    "edit": {
+     "field": "question",
+     "find": "solid copper cube,",
+     "replace": "solid copper cube of side <math display=\"inline\"><mrow><mn>10</mn><mrow><mtext>&nbsp;</mtext><mi mathvariant="
+    },
+    "proposed_edits": [
+     {
+      "field": "question",
+      "find": "solid copper cube,",
+      "replace": "solid copper cube of side <math display=\"inline\"><mrow><mn>10</mn><mrow><mtext>&nbsp;</mtext><mi mathvariant="
+     }
+    ],
+    "suggestion": "Add the edge length of 10 cm to the question stem as used in the solution.",
+    "evidence": "The solution calculates volume using an edge length of 10 cm, but this value was missing from the question text.",
+    "confidence": 0.95,
+    "model_confidence": 0.95,
+    "reported": true,
+    "route": "faculty_review",
+    "reasons": [
+     "broken markup: edit changes tag balance {} -> {'math': 1, 'mrow': 2} or adds a stray < >"
+    ],
+    "reason_kinds": [
+     "guard_rejected_edit"
+    ],
+    "key_checks_agree": null,
+    "solution_checks_agree": null,
+    "edited_solution_concludes": null
+   }
+  ],
+  "auditor_error": null,
+  "auditor_raw": {
+   "defects": [
+    {
+     "id": 1,
+     "repair": "stem_data",
+     "edits": [
+      {
+       "field": "question",
+       "find": "solid copper cube,",
+       "replace": "solid copper cube of side <math display=\"inline\"><mrow><mn>10</mn><mrow><mtext>&nbsp;</mtext><mi mathvariant="
+      }
+     ],
+     "suggestion": "Add the edge length of 10 cm to the question stem as used in the solution.",
+     "evidence": "The solution calculates volume using an edge length of 10 cm, but this value was missing from the question text.",
+     "confidence": 0.95,
+     "reported": true
+    }
+   ],
+   "reports": [
+    {
+     "reportId": "R006",
+     "verdict": "defect",
+     "defect_id": 1,
+     "evidence": "The student correctly noted that the edge length of the cube is missing.",
+     "confidence": 0.95
+    }
+   ]
+  },
+  "models": {
+   "solver_a": "gemini-3.1-flash-lite",
+   "solver_b": "gemini-3.5-flash-lite",
+   "auditor": "gemini-3.5-flash-lite"
+  },
+  "prompt_versions": {
+   "solver": "v1",
+   "extractor": "v1",
+   "auditor": "v1",
+   "reply": "v2"
+  }
+ }
+]

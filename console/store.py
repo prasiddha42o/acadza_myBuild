@@ -92,8 +92,15 @@ class Store:
         self.conn.execute("CREATE TABLE IF NOT EXISTS questions (qid TEXT PRIMARY KEY, live TEXT)")
         self.conn.execute("CREATE TABLE IF NOT EXISTS audit (id INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT, actor TEXT,"
                           " action TEXT, item TEXT, qid TEXT, reports TEXT, detail TEXT)")
-        if self._kv("seeded") is None:
-            self.seed()
+        if self._kv("seeded") is None or self._kv("source_sig") != self.source_sig():
+            self.seed()                    # new engine output -> start from it, not a stale DB
+
+    def source_sig(self):
+        """Which precomputed file the DB was built from, and when it was written."""
+        for f in (self.root / "engine_out" / "report_rows.json", self.root / "results.json"):
+            if f.exists():
+                return "%s@%d" % (f.name, f.stat().st_mtime)
+        return "demo"
 
     # kv / low level
     def _kv(self, k, v=None):
@@ -181,7 +188,7 @@ class Store:
                         it["before"], it["after"] = q, new
                         self._set_live(it["questionId"], new)
                     self._save_item(it)
-            self._kv("seeded", True)
+            self._kv("seeded", True); self._kv("source_sig", self.source_sig())
             self._kv("demo", demo)
             self._kv("source", src)
             self.conn.commit()

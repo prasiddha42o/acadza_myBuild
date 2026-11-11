@@ -1,0 +1,30 @@
+[
+ {
+  "id": 1,
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "starts equilibrium position",
+   "replace": "starts from equilibrium position"
+  },
+  "proposed_edits": [
+   {
+    "field": "question",
+    "find": "starts equilibrium position",
+    "replace": "starts from equilibrium position"
+   }
+  ],
+  "suggestion": "Add missing preposition 'from'.",
+  "evidence": "The phrase 'starts equilibrium position' is missing the word 'from'.",
+  "confidence": 0.98,
+  "model_confidence": 0.98,
+  "reported": false,
+  "route": "auto_apply",
+  "reasons": [],
+  "reason_kinds": [],
+  "key_checks_agree": null,
+  "solution_checks_agree": null,
+  "edited_solution_concludes": null,
+  "questionId": "6956d7e988d7701e5617bd3e"
+ }
+]

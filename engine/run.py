@@ -230,7 +230,8 @@ def reason_kind(r):
     if r.startswith("find text") or "find must match" in r or "outside scope" in r or "changed numbers" in r \
             or "invalid for type" in r or "!= stored" in r or "additive" in r or "rewrite not allowed" in r \
             or "touches stem" in r or "grows text" in r or "may not carry an edit" in r or "unknown field" in r \
-            or "empty find" in r or "may not change questionType" in r or "bad target type" in r:
+            or "empty find" in r or "may not change questionType" in r or "bad target type" in r \
+            or "broken markup" in r or "replace is not text" in r:
         return "guard_rejected_edit"
     if "independent solves" in r or "solution edit needs" in r:
         return "checks_disagree"

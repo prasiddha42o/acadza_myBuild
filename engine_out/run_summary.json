@@ -1,0 +1,56 @@
+{
+ "questions": 43,
+ "reports": 44,
+ "routes": {
+  "auto_apply": 17,
+  "no_change": 17,
+  "faculty_review": 10
+ },
+ "verdicts": {
+  "defect": 27,
+  "no_error": 11,
+  "display_issue": 2,
+  "not_actionable": 1,
+  "already_fixed": 1,
+  "language_mode": 1,
+  "app_issue": 1
+ },
+ "defects_found": 23,
+ "defects_auto": 14,
+ "defects_faculty_by_reason": {
+  "policy": 5,
+  "no_edit": 1,
+  "checks_disagree": 1,
+  "inserted_value_unseen": 1,
+  "guard_rejected_edit": 1
+ },
+ "audits_with_guard_rejection": 1,
+ "guard_rejected_defects": [
+  {
+   "questionId": "696a866665252c04fc1f81c2",
+   "repair": "stem_data",
+   "reasons": [
+    "broken markup: edit changes tag balance {} -> {'math': 1, 'mrow': 2} or adds a stray < >"
+   ]
+  }
+ ],
+ "proposed_auto_eligible_edits": 17,
+ "auditor_errors": [],
+ "replies_from_template": 4,
+ "llm": {
+  "calls": 1,
+  "cache_hits": 216,
+  "retries": 0,
+  "fallbacks": 0,
+  "answered_by_model": {
+   "gemini-3.8-flash": 21,
+   "gemini-3.6-flash": 18,
+   "gemini-3.5-flash-lite": 146,
+   "gemini-3.1-flash-lite": 32
+  },
+  "exhausted": []
+ },
+ "audits_solvers_same_model": [],
+ "complete": true,
+ "stopped": null
+}

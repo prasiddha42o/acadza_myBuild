@@ -1,0 +1,749 @@
+[
+ {
+  "reportId": "R001",
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "edit": {
+   "field": "answer",
+   "find": "C",
+   "replace": "A"
+  },
+  "route": "auto_apply",
+  "confidence": 1.0,
+  "evidence": "In a series LCR circuit, supply voltage V = sqrt(V_R^2 + (V_L - V_C)^2) = sqrt(40^2 + (60 - 30)^2) = 50 V, which corresponds to option (A). Checks: solver A=A, solver B=A, stored solution=A, key=C.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Update the answer key to A.",
+  "student_reply": "Thanks for pointing this out. You were right that the answer key was incorrect, and we have now updated it to 50 V.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R002",
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "edit": {
+   "field": "answer",
+   "find": "C",
+   "replace": "A"
+  },
+  "route": "auto_apply",
+  "confidence": 1.0,
+  "evidence": "In a series LCR circuit, supply voltage V = sqrt(V_R^2 + (V_L - V_C)^2) = sqrt(40^2 + (60 - 30)^2) = 50 V, which corresponds to option (A). Checks: solver A=A, solver B=A, stored solution=A, key=C.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Update the answer key to A.",
+  "student_reply": "Thanks for pointing this out. You were right, the previous answer key of 130 V (C) was incorrect, and we have now updated it to the correct answer of 50 V (A).",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R003",
+  "questionId": "60f744b3f1b9bc7cc7b4a949",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "edit": {
+   "field": "answer",
+   "find": "C",
+   "replace": "A"
+  },
+  "route": "auto_apply",
+  "confidence": 1.0,
+  "evidence": "In a series LCR circuit, supply voltage V = sqrt(V_R^2 + (V_L - V_C)^2) = sqrt(40^2 + (60 - 30)^2) = 50 V, which corresponds to option (A). Checks: solver A=A, solver B=A, stored solution=A, key=C.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Update the answer key to A.",
+  "student_reply": "Thanks for pointing this out. You were right, option (C) incorrectly added the voltages instead of using the correct calculation root(40^2 + 30^2) = 50 V for option (A). We have fixed this in the question now.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R004",
+  "questionId": "68e870ef42c06737d6e565c4",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "edit": {
+   "field": "answer",
+   "find": "A",
+   "replace": "D"
+  },
+  "route": "auto_apply",
+  "confidence": 0.99,
+  "evidence": "Pressure P = (1/3) * rho * (v_rms)^2 = (1/3) * (9 * 10^-2 kg/m^3) * (400 m/s)^2 = 4800 N/m^2, which matches option (D). Both solvers and the stored solution conclude D. Checks: solver A=D, solver B=D, stored solution=D, key=A.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Update the stored answer key from A to D.",
+  "student_reply": "Thank you for pointing this out! Aap bilkul sahi the ki answer key galat thi, aur ab isse theek kar diya gaya hai. Correct answer 4800 N/m^2 hai.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R005",
+  "questionId": "68dea616d0cda73d07e93ae6",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "edit": {
+   "field": "answer",
+   "find": "2",
+   "replace": "1"
+  },
+  "route": "auto_apply",
+  "confidence": 1.0,
+  "evidence": "Both solvers and the stored solution calculate total flux as q / (2 ε0), which equates to n = 1 when compared with nq / (2 ε0). Checks: solver A=1, solver B=1, stored solution=1, key=2.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Change the answer key from 2 to 1.",
+  "student_reply": "Thanks for flagging this! You were completely right that n = 1, and we have now fixed the answer key.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R006",
+  "questionId": "696a866665252c04fc1f81c2",
+  "verdict": "defect",
+  "repair": "stem_data",
+  "edit": {
+   "field": "question",
+   "find": "solid copper cube,",
+   "replace": "solid copper cube of side <math display=\"inline\"><mrow><mn>10</mn><mrow><mtext>&nbsp;</mtext><mi mathvariant="
+  },
+  "route": "faculty_review",
+  "confidence": 0.95,
+  "evidence": "The solution calculates volume using an edge length of 10 cm, but this value was missing from the question text. Sent to faculty: broken markup: edit changes tag balance {} -> {'math': 1, 'mrow': 2} or adds a stray < >.",
+  "_defect_id": 1,
+  "_reasons": [
+   "broken markup: edit changes tag balance {} -> {'math': 1, 'mrow': 2} or adds a stray < >"
+  ],
+  "_suggestion": "Add the edge length of 10 cm to the question stem as used in the solution.",
+  "student_reply": "Thank you for flagging this. A teacher is checking it now, and the question will be updated if needed.",
+  "_reply_src": "template"
+ },
+ {
+  "reportId": "R007",
+  "questionId": "60f742f6660d187cc13a8078",
+  "verdict": "defect",
+  "repair": "stem_data",
+  "edit": {
+   "field": "question",
+   "find": "an inductance are connected",
+   "replace": "an inductance of 95.5 mH are connected"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "The question stem mentions 'an inductance are connected' without specifying its numerical value. The stored solution explicitly uses L = 95.5 × 10⁻³ H (95.5 mH) to calculate Z = 50 ohm.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Add 'of 95.5 mH' after 'inductance' in the question stem as used in the solution.",
+  "student_reply": "Thank you for pointing that out. Aap bilkul sahi the, question mein inductance ki value missing thi. Humne ise theek kar diya hai.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R008",
+  "questionId": "60f742f6660d187cc13a8078",
+  "verdict": "defect",
+  "repair": "stem_data",
+  "edit": {
+   "field": "question",
+   "find": "an inductance are connected",
+   "replace": "an inductance of 95.5 mH are connected"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "The question stem mentions 'an inductance are connected' without specifying its numerical value. The stored solution explicitly uses L = 95.5 × 10⁻³ H (95.5 mH) to calculate Z = 50 ohm.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Add 'of 95.5 mH' after 'inductance' in the question stem as used in the solution.",
+  "student_reply": "Thanks for pointing that out. You were right that the inductance data was missing, and we have now updated the question with the correct values.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R009",
+  "questionId": "622f08d7b70e4b50e4500a1b",
+  "verdict": "defect",
+  "repair": "option_repair",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 1.0,
+  "evidence": "Options (A), (B), and (C) are present in the question HTML, but option (D) is missing. Sent to faculty: no edit proposed.",
+  "_defect_id": 1,
+  "_reasons": [
+   "no edit proposed"
+  ],
+  "_suggestion": "Add missing option (D) with an incorrect distractor value.",
+  "student_reply": "Thanks for pointing that out. Our team is currently reviewing the question, and a teacher will check it soon.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R010",
+  "questionId": "622f08d7b70e4b50e4500a1b",
+  "verdict": "defect",
+  "repair": "option_repair",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 1.0,
+  "evidence": "Options (A), (B), and (C) are present in the question HTML, but option (D) is missing. Sent to faculty: no edit proposed.",
+  "_defect_id": 1,
+  "_reasons": [
+   "no edit proposed"
+  ],
+  "_suggestion": "Add missing option (D) with an incorrect distractor value.",
+  "student_reply": "Thanks for pointing this out. A teacher is currently checking the question to make sure all the options appear correctly.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R011",
+  "questionId": "68e872546e45ba37dcc16bc0",
+  "verdict": "defect",
+  "repair": "option_repair",
+  "edit": {
+   "field": "question",
+   "find": "(C) <br />",
+   "replace": "(C) <math display=\"inline\"><mrow><mn> 1 </mn><mi>:</mi><mn> 1 </mn></mrow></math><br />"
+  },
+  "route": "faculty_review",
+  "confidence": 0.95,
+  "evidence": "Option C is blank in the question HTML. Sent to faculty: inserted value(s) ['1', '1'] not found anywhere in the stored solution.",
+  "_defect_id": 1,
+  "_reasons": [
+   "inserted value(s) ['1', '1'] not found anywhere in the stored solution"
+  ],
+  "_suggestion": "Fill option C with 1:1.",
+  "student_reply": "Thank you for flagging this. A teacher is checking it now, and the question will be updated if needed.",
+  "_reply_src": "template"
+ },
+ {
+  "reportId": "R012",
+  "questionId": "61dffbec08489156b684bd22",
+  "verdict": "defect",
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "Epithellial tisue",
+   "replace": "Epithelial tissue"
+  },
+  "route": "auto_apply",
+  "confidence": 0.99,
+  "evidence": "Option (A) contains typos ('Epithellial tisue' instead of 'Epithelial tissue').",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Correct the spelling of 'Epithelial tissue' in option (A).",
+  "student_reply": "Thanks for pointing that out. Option (A) had a spelling mistake and we have now corrected it to 'Epithelial tissue'.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R013",
+  "questionId": "617fa18efd53ff1629ed890f",
+  "verdict": "defect",
+  "repair": "exam_reference",
+  "edit": {
+   "field": "question",
+   "find": "(NEET 2019) ",
+   "replace": ""
+  },
+  "route": "auto_apply",
+  "confidence": 0.98,
+  "evidence": "The question stem contains the stray exam source tag '(NEET 2019) '.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Remove the exam reference '(NEET 2019) ' from the question text.",
+  "student_reply": "Thanks for pointing that out! You were right, and we've removed the extra exam reference from the question so it's clean for your practice.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R014",
+  "questionId": "63765a28f1d8416ae0408d89",
+  "verdict": "defect",
+  "repair": "markup_leak",
+  "edit": {
+   "field": "question",
+   "find": "\\frac{7}{8}",
+   "replace": "<math display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mn>7</mn></mrow><mrow><mn>8</mn></mrow></mfrac></mrow></mstyle></math>"
+  },
+  "route": "auto_apply",
+  "confidence": 1.0,
+  "evidence": "Raw LaTeX string '\\frac' is visible in the question text as noted by lint and student.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Replace raw LaTeX \\frac{7}{8} with proper MathML.",
+  "student_reply": "Thanks for pointing this out. We found the raw code visible in the question and have corrected it now. All the best with your prep!",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R015",
+  "questionId": "6956d79788d7701e5617bc29",
+  "verdict": "defect",
+  "repair": "identical_options",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 1.0,
+  "evidence": "Options B and C are identical with the text '0 W'. Sent to faculty: identical_options needs a human by policy.",
+  "_defect_id": 1,
+  "_reasons": [
+   "identical_options needs a human by policy"
+  ],
+  "_suggestion": "Option B and C are both 0 W. Change option C to a distinct incorrect value.",
+  "student_reply": "Thanks for pointing that out! Our faculty is checking the question and will fix it soon.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R016",
+  "questionId": "6263d75bdd44e265ef926d97",
+  "verdict": "defect",
+  "repair": "solution_fix",
+  "edit": {
+   "field": "solution",
+   "find": "*",
+   "replace": "<h3>Let L be the side of the cube. With the 800 g mass, the cube is fully submerged: (M + 800)g = L<sup>3</sup>g. Without the mass, the submerged height is (L - 2) cm, so Mg = L<sup>2</sup>(L - 2)g. Subtracting the two equations gives 800 = 2L<sup>2</sup>, leading to L = 20 cm.</h3>"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "Solvers independently derived L = 20 cm, whereas the stored solution has incorrect math and concludes 40 cm.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "",
+  "student_reply": "Thanks for pointing this out. The solution had a typo saying 40 cm instead of 20 cm, and we have fixed it now. Keep up the good work!",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R017",
+  "questionId": "6208e80a9cb2ab67dac61bd0",
+  "verdict": "already_fixed",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.98,
+  "evidence": "The student reported a spelling mistake 'mere' in the options, which was fixed in the faculty edit on 2026-11-07.",
+  "student_reply": "Thank you for reporting this. It has already been corrected, so please reload the question.",
+  "_reply_src": "template"
+ },
+ {
+  "reportId": "R018",
+  "questionId": "612151a6a34397610a9a2e58",
+  "verdict": "defect",
+  "repair": "solution_fix",
+  "edit": {
+   "field": "solution",
+   "find": "*",
+   "replace": "<p>The de-Broglie wavelength of an electron is given by &lambda; = <i>h</i> / &radic;(2<i>mE</i>), where <i>E</i> is kinetic energy.</p><p>Rearranging for <i>E</i>:<br /><i>E</i> = <i>h</i><sup>2</sup> / (2<i>m</i>&lambda;<sup>2</sup>)</p><p>Substituting <i>h</i> = 6.63 &times; 10<sup>-34</sup> J&sdot;s, <i>m</i> = 9.1 &times; 10<sup>-31</sup> kg, and &lambda; = 0.3 &times; 10<sup>-9</sup> m:<br /><i>E</i> = (6.63 &times; 10<sup>-34</sup>)<sup>2</sup> / [2 &times; 9.1 &times; 10<sup>-31</sup> &times; (0.3 &times; 10<sup>-9</sup>)<sup>2</sup>] &approx; 2.68 &times; 10<sup>-18</sup> J</p><p>Converting to electron-volts:<br /><i>E</i> = (2.68 &times; 10<sup>-18</sup> J) / (1.6 &times; 10<sup>-19</sup> J/eV) &approx; 16.8 eV.</p><p>Hence, the correct option is (B).</p>"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "The stored solution is corrupted with fragments from an unrelated question (such as '= 5.47 \\AA' and 'h/|I|') before stating 16.8 eV.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Replace the corrupted solution text with the step-by-step kinetic energy derivation.",
+  "student_reply": "Thanks for pointing that out! You were right that the solution had text from another problem. We have cleaned it up and it is now corrected to 16.8 eV.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R019",
+  "questionId": "612151a6a34397610a9a2e58",
+  "verdict": "defect",
+  "repair": "solution_fix",
+  "edit": {
+   "field": "solution",
+   "find": "*",
+   "replace": "<p>The de-Broglie wavelength of an electron is given by &lambda; = <i>h</i> / &radic;(2<i>mE</i>), where <i>E</i> is kinetic energy.</p><p>Rearranging for <i>E</i>:<br /><i>E</i> = <i>h</i><sup>2</sup> / (2<i>m</i>&lambda;<sup>2</sup>)</p><p>Substituting <i>h</i> = 6.63 &times; 10<sup>-34</sup> J&sdot;s, <i>m</i> = 9.1 &times; 10<sup>-31</sup> kg, and &lambda; = 0.3 &times; 10<sup>-9</sup> m:<br /><i>E</i> = (6.63 &times; 10<sup>-34</sup>)<sup>2</sup> / [2 &times; 9.1 &times; 10<sup>-31</sup> &times; (0.3 &times; 10<sup>-9</sup>)<sup>2</sup>] &approx; 2.68 &times; 10<sup>-18</sup> J</p><p>Converting to electron-volts:<br /><i>E</i> = (2.68 &times; 10<sup>-18</sup> J) / (1.6 &times; 10<sup>-19</sup> J/eV) &approx; 16.8 eV.</p><p>Hence, the correct option is (B).</p>"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "The stored solution is corrupted with fragments from an unrelated question (such as '= 5.47 \\AA' and 'h/|I|') before stating 16.8 eV.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Replace the corrupted solution text with the step-by-step kinetic energy derivation.",
+  "student_reply": "Thanks for pointing this out! Wajah yeh thi ki solution ke shuruat me galat value '5.47 R%A' aa gayi thi, jo ki calculation se match nahi ho rahi thi. Humne isko theek kar diya hai.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R020",
+  "questionId": "68c8153cfb6b2f16e2d3ceaf",
+  "verdict": "defect",
+  "repair": "answer_key",
+  "edit": {
+   "field": "answer",
+   "find": [
+    "A, B, D"
+   ],
+   "replace": [
+    "A",
+    "B",
+    "D"
+   ]
+  },
+  "route": "faculty_review",
+  "confidence": 0.95,
+  "evidence": "The stored answer key was malformed, causing correct submissions to be incorrectly graded. Checks: solver A=A,B,D, solver B=A,B,D, stored solution=none, key=A,B,D. Sent to faculty: answer change needs 2 independent solves + stored solution to agree.",
+  "_defect_id": 1,
+  "_reasons": [
+   "answer change needs 2 independent solves + stored solution to agree"
+  ],
+  "_suggestion": "Fix the answer key format so student answers matching A, B, and D are evaluated correctly.",
+  "student_reply": "Thanks for pointing this out. Our faculty is checking the question right now to make sure everything is correct.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R021",
+  "questionId": "68f21caf941cda588bc04365",
+  "verdict": "defect",
+  "repair": "type_mismatch",
+  "edit": [
+   {
+    "field": "questionType",
+    "find": "mcq",
+    "replace": "scq"
+   },
+   {
+    "field": "answer",
+    "find": [
+     "",
+     "B"
+    ],
+    "replace": "B"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 1.0,
+  "evidence": "Only option B is correct (tau = 1.44 min), but the question was incorrectly stored as an mcq with a malformed key. Checks: solver A=B, solver B=B, stored solution=B, key=B.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Change question type to scq and set answer key to B.",
+  "student_reply": "Thanks for pointing this out. You were right that only B is correct, and we have fixed the question type so it no longer causes negative marking.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R022",
+  "questionId": "61ee6c9d90a1a968a168686b",
+  "verdict": "defect",
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "Choroid plexux",
+   "replace": "Choroid plexus"
+  },
+  "route": "auto_apply",
+  "confidence": 0.98,
+  "evidence": "Option (D) in the question text reads '(D) Choroid plexux', misspelling 'plexus'.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Correct the spelling of 'plexux' to 'plexus' in option (D).",
+  "student_reply": "Thanks for pointing this out. Option (D) incorrectly spelled 'plexus' as 'plexux', and we have now corrected it.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R023",
+  "questionId": "68ecbacb2ec87a18deba1ad7",
+  "verdict": "defect",
+  "repair": "wrong_chapter",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 1.0,
+  "evidence": "Action potential generation and refractory periods belong to Neural Control and Coordination, not The Living World. Sent to faculty: wrong_chapter needs a human by policy.",
+  "_defect_id": 1,
+  "_reasons": [
+   "wrong_chapter needs a human by policy"
+  ],
+  "_suggestion": "Move question to the Neural Control and Coordination chapter.",
+  "student_reply": "Thanks for pointing that out! A teacher is currently checking this chapter tag to make sure it is sorted correctly.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R024",
+  "questionId": "5fc60508028950133eac8963",
+  "verdict": "defect",
+  "repair": "answer_form",
+  "edit": {
+   "field": "question",
+   "find": "Then the frictional force is equal to",
+   "replace": "Then the frictional force (in N) is equal to"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "The question is an integer question asking for the frictional force, but it does not specify the expected unit (N).",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Specify the unit (in N) in the question stem.",
+  "student_reply": "Thanks for pointing this out. We missed the unit in the question, but it has now been fixed to state the unit in N.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R025",
+  "questionId": "622df25ab70e4b50e44ff837",
+  "verdict": "defect",
+  "repair": "diagram",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 0.95,
+  "evidence": "The question stem states 'as shown in figure', but no figure is provided. Sent to faculty: diagram needs a human by policy.",
+  "_defect_id": 1,
+  "_reasons": [
+   "diagram needs a human by policy"
+  ],
+  "_suggestion": "Add the missing diagram showing the tube with a hemispherical bubble at end 1 and a sub-hemispherical bubble at end 2.",
+  "student_reply": "Thank you for pointing that out. A teacher is currently checking the question to fix the missing figure.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R026",
+  "questionId": "620e23cecc50543bc7db9186",
+  "verdict": "defect",
+  "repair": "syllabus",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 0.95,
+  "evidence": "The question asks how to distinguish ancestral character state using outgroup comparison, which student reported as out of syllabus for NEET. Sent to faculty: syllabus needs a human by policy.",
+  "_defect_id": 0,
+  "_reasons": [
+   "syllabus needs a human by policy"
+  ],
+  "_suggestion": "Faculty to review whether phylogenetic outgroup comparison is within the current NEET syllabus scope.",
+  "student_reply": "Thanks for pointing this out. Our expert teachers are checking your feedback to make sure the NEET syllabus is followed strictly.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R027",
+  "questionId": "6062ec84518e9535e120c422",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.99,
+  "evidence": "The question asks for the coefficient of cubical expansion, which is gamma = 3*alpha = 3*(1.9 x 10^-5 /deg C) = 5.7 x 10^-5 /deg C (Option A). Option C is only the coefficient of linear expansion.",
+  "student_reply": "Thanks for reaching out. The question is actually correct as it asks for the coefficient of cubical expansion, which is three times the linear expansion (Option A), whereas Option C is just the linear expansion.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R028",
+  "questionId": "6956d7bb23cb221e570d6013",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 1.0,
+  "evidence": "Range and height equality formula yields tan theta = 4, so theta = tan^-1(4), matching option B. The student incorrectly claimed tan^-1(2).",
+  "student_reply": "Thanks for sharing your thoughts on this question. We double-checked it, and the range and height equality formula actually gives tan theta = 4, so theta is tan inverse 4. Keep up the hard work!",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R029",
+  "questionId": "68e8734442c06737d6e56da4",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 1.0,
+  "evidence": "Calculations show m = 10 kg, F = 90 N, and mu = 0.8. Doubling F gives 2F - 100(0.8) = 100, so a = 10 m/s^2, confirming option A is correct.",
+  "student_reply": "Thanks for checking so carefully, but option A is actually correct here. Remember to re-check the limiting friction value before finding the final acceleration.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R030",
+  "questionId": "6956d7e988d7701e5617bd3e",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.99,
+  "evidence": "Solvers and stored solution confirm the amplitude is 8 sqrt(2) m; the student's claim of 4 root 2 is incorrect.",
+  "student_reply": "Thanks for sharing your thoughts on this question. Our team checked it, and the amplitude is actually 8 sqrt(2) m. You might have missed factoring in the superposition of the two wave components correctly.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R031",
+  "questionId": "68dea619d0cda73d07e93aee",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.99,
+  "evidence": "Both independent solvers and the stored solution confirm that t = 4 seconds; the student's claim of 2 seconds is mathematically incorrect.",
+  "student_reply": "Thank you for sharing your thoughts, par calculations ke mutabiq t = 4 seconds hi aana chahiye. Ek baar phir se solve karke try karo, shayad calculation me choti si mistake hui ho.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R032",
+  "questionId": "68dea7c2387eea3d0d95f9bb",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 1.0,
+  "evidence": "The question explicitly asks for the shift in cm; 0.08 m converts to 8 cm, making the stored answer key 8 correct.",
+  "student_reply": "Aapka flagging ke liye thanks! Sawal mein shift centimeters mein pucha hai, isliye 0.08 m ko 8 cm likha gaya hai. Answer key bilkul theek hai.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R033",
+  "questionId": "68dea715387eea3d0d95f790",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.99,
+  "evidence": "The question specifies considering correct significant digits; 7.203 has 4 significant figures, so A rounds to 311.3 m^2 and 10A equals 3113.",
+  "student_reply": "Thanks for sharing your thoughts! The question requires considering significant digits; 7.203 has four, so A rounds to 311.3 and 10A equals 3113.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R034",
+  "questionId": "695ee00b88d7701e561aabc5",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.95,
+  "evidence": "Resultant intensity of two waves with equal amplitude and pi/2 phase difference is 2I0, making Assertion (A) false as confirmed by both independent solvers.",
+  "student_reply": "Thanks for sharing your thoughts on this question. A careful check shows that the assertion is actually false because the resultant intensity of two equal-amplitude waves with a pi/2 phase difference is 2I0, so you missed the effect of the phase difference on the interference term.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R035",
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.98,
+  "evidence": "Relaxin and inhibin have independent, non-antagonistic physiological roles (relaxin softens pelvic ligaments during childbirth while inhibin inhibits FSH secretion), making option D correct.",
+  "student_reply": "Thanks for flagging this, but the question is correct. Relaxin and inhibin actually have independent, non-antagonistic roles, as relaxin softens pelvic ligaments during childbirth while inhibin inhibits FSH secretion, making option D right.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R036",
+  "questionId": "60ca4feb6420652745f55522",
+  "verdict": "display_issue",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.95,
+  "evidence": "All four options are fully present in the question HTML; the complaint relates to client-side screen layout or rendering on the student's mobile device.",
+  "student_reply": "Thanks for letting us know! We checked the question and all the options are there, but it looks like a display issue on your mobile screen. We will work on making the layout smoother for phones.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R037",
+  "questionId": "68c9ae5afb6b2f16e2d43b1c",
+  "verdict": "display_issue",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.99,
+  "evidence": "Student reports loading performance issue, but question content, answer key, and options are correct.",
+  "student_reply": "Thanks for letting us know. We checked and found that the question content is correct, but we are working on improving the loading speed so it opens smoothly for you next time.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R038",
+  "questionId": "68f21df0941cda588bc0470b",
+  "verdict": "app_issue",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.95,
+  "evidence": "Student states I clicked A but it saved B, which describes a platform submission issue rather than an error in the question content. Solvers and stored solution confirm option A is correct.",
+  "student_reply": "Thanks for letting us know! We checked and found that the platform recorded a different option by mistake, but option A is actually the correct answer here.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R039",
+  "questionId": "68c801bc1b1dbc16dc93bf2b",
+  "verdict": "language_mode",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 1.0,
+  "evidence": "The student requested the question in Hindi, which is a language mode request.",
+  "student_reply": "Thank you for sharing your feedback. Currently, this question is only available in English, but we have noted your request for Hindi.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R040",
+  "questionId": "6264197209f4fd65f58f5707",
+  "verdict": "defect",
+  "repair": "spelling",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "Golden riceis",
+    "replace": "Golden rice is"
+   },
+   {
+    "field": "solution",
+    "find": "producebeta-carotene",
+    "replace": "produce beta-carotene"
+   },
+   {
+    "field": "solution",
+    "find": "precursor ofvitamin A",
+    "replace": "precursor of vitamin A"
+   },
+   {
+    "field": "solution",
+    "find": "helpprevent",
+    "replace": "help prevent"
+   },
+   {
+    "field": "solution",
+    "find": "lead tonight blindness",
+    "replace": "lead to night blindness"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "The solution contains multiple spacing and typographical errors such as 'Golden riceis', 'producebeta-carotene', 'precursor ofvitamin A', 'helpprevent', and 'lead tonight blindness'.",
+  "_defect_id": 1,
+  "_reasons": [],
+  "_suggestion": "Correct spacing and typographical errors in the solution text.",
+  "student_reply": "Thanks for pointing this out. We found some typos and spacing errors in the solution text, and we have fixed them now. All the best with your prep!",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R041",
+  "questionId": "6208e298fa399567e0878700",
+  "verdict": "not_actionable",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.9,
+  "evidence": "Comment has no readable content (pre-triage: gibberish); no claim to check.",
+  "student_reply": "Thanks for writing to us. We checked the question and couldn't find a problem; if something looks wrong, tell us what and where.",
+  "_reply_src": "template"
+ },
+ {
+  "reportId": "R042",
+  "questionId": "63c7cce12981ed154ee92c94",
+  "verdict": "defect",
+  "repair": "wrong_chapter",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 1.0,
+  "evidence": "Displacement current and capacitor charging rate belong to electromagnetic waves, not geometrical optics. Sent to faculty: wrong_chapter needs a human by policy.",
+  "_defect_id": 1,
+  "_reasons": [
+   "wrong_chapter needs a human by policy"
+  ],
+  "_suggestion": "Move this question from Geometrical optics and optical instruments to Electromagnetic Waves.",
+  "student_reply": "Thank you for pointing this out. Our faculty is currently reviewing the chapter tagging to make sure it is correct.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R043",
+  "questionId": "636283dbe3770c24f866e6d6",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 0.99,
+  "evidence": "Surface charge density ratio is sigma_bigger/sigma_smaller = 4:1, confirming option B is correct and the student misunderstood area versus charge scaling.",
+  "student_reply": "Thanks for sharing your thoughts! We checked this one carefully, and option B is actually correct. You might have mixed up how surface area and charge scale here, since the bigger drop has a smaller surface charge density.",
+  "_reply_src": "llm"
+ },
+ {
+  "reportId": "R044",
+  "questionId": "68dea577d0cda73d07e9391c",
+  "verdict": "no_error",
+  "repair": null,
+  "edit": null,
+  "route": "no_change",
+  "confidence": 1.0,
+  "evidence": "The student calculated the potential at point P as 22 V, but failed to subtract the potential at point S (8 V) to find the requested potential difference (14 V).",
+  "student_reply": "Thanks for sharing your thoughts, but the question is actually correct. You found the potential at point P as 22 V, but don't forget to subtract the potential at point S (8 V) to get the final potential difference of 14 V.",
+  "_reply_src": "llm"
+ }
+]

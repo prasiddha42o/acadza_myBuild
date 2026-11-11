@@ -18,6 +18,24 @@ def _digits(s):
     return sorted(re.findall(r"\d+(?:\.\d+)?", flat(s)))
 
 
+VOID = {"br", "img", "hr", "input", "meta", "link", "wbr", "col", "area", "source"}
+TAG = re.compile(r"<(/?)([a-zA-Z][\w:-]*)[^<>]*?(/?)>")
+
+
+def markup_shape(s):
+    """(net open-minus-close count per tag name, count of stray < or > outside complete tags).
+    An edit must not change this: a truncated model reply ('<mi mathvariant=') or a dropped
+    closing tag would break how the question renders for every student."""
+    net = {}
+    for close, name, selfclose in TAG.findall(s):
+        name = name.lower()
+        if selfclose or name in VOID:
+            continue
+        net[name] = net.get(name, 0) + (-1 if close else 1)
+    stray = TAG.sub("", s).count("<") + TAG.sub("", s).count(">")
+    return {k: n for k, n in net.items() if n}, stray
+
+
 def edit_list(edit):
     if edit is None:
         return []
@@ -58,6 +76,8 @@ def validate_edit(q, repair, edit):
         if find == WHOLE:
             if repair not in REWRITE_OK:
                 v.append("whole-field rewrite not allowed for %s" % repair)
+            elif not isinstance(rep, str) or markup_shape(rep) != ({}, 0):
+                v.append("broken markup in rewrite (unclosed tag or truncated reply)")
             continue
         if not isinstance(find, str) or not find:
             v.append("empty find")
@@ -66,6 +86,12 @@ def validate_edit(q, repair, edit):
         if n != 1:
             v.append("find must match exactly once in %s (matched %d)" % (field, n))
             continue
+        if not isinstance(rep, str):
+            v.append("replace is not text")
+            continue
+        (fnet, fstray), (rnet, rstray) = markup_shape(find), markup_shape(rep)
+        if fnet != rnet or rstray > fstray:
+            v.append("broken markup: edit changes tag balance %s -> %s or adds a stray < >" % (fnet, rnet))
         if len(rep) - len(find) > MAX_GROWTH and repair not in REWRITE_OK:
             v.append("edit grows text by >%d chars" % MAX_GROWTH)
         if repair in DIGIT_PRESERVING:

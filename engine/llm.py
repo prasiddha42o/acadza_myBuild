@@ -9,6 +9,7 @@ Provider and models come from env vars (defaults = Gemini free tier):
   GEMINI_API_KEY  / ANTHROPIC_API_KEY         (never committed)
   LLM_MIN_INTERVAL  seconds between calls to the same model (default 6 on Gemini = 10 RPM)
   LLM_TEMPERATURE   default 0; dropped automatically if a model rejects it
+  LLM_TIMEOUT       seconds per request (default 150); 2 timeouts in a row skip to the next model
 
 Responses are cached on disk by a hash of the full request, so reruns cost nothing and
 results.json is reproducible."""
@@ -80,6 +81,7 @@ class LLM:
         default_gap = "6" if self.provider == "gemini" else "0"
         self.min_interval = float(os.environ.get("LLM_MIN_INTERVAL", default_gap))
         self.temperature = float(os.environ.get("LLM_TEMPERATURE", "0"))
+        self.timeout = float(os.environ.get("LLM_TIMEOUT", "150"))
         self.verbose = verbose
         self._client = None
         self._last = {}
@@ -151,6 +153,7 @@ class LLM:
         self._last[model] = time.time()
 
     def _call_with_retry(self, model, system, user, schema, effort):
+        timeouts = 0
         for attempt in range(MAX_TRIES):
             self._pace(model)
             self.stats["calls"] += 1
@@ -160,6 +163,13 @@ class LLM:
                 return self._anthropic(model, system, user, schema, effort)
             except QuotaExhausted:
                 raise
+            except _Timeout:
+                timeouts += 1
+                self.stats["retries"] += 1
+                if self.verbose:
+                    print("  [timeout %d] %s: no answer in %.0fs" % (timeouts, model, self.timeout))
+                if timeouts >= 2:
+                    raise ModelUnavailable("%s timed out twice" % model)
             except _Retryable as e:
                 self.stats["retries"] += 1
                 wait = _retry_delay(str(e), attempt)
@@ -175,7 +185,8 @@ class LLM:
         if self._client is None:
             if not os.environ.get("GEMINI_API_KEY"):
                 raise LLMError("GEMINI_API_KEY is not set")
-            self._client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+            self._client = genai.Client(api_key=os.environ["GEMINI_API_KEY"],
+                                        http_options=types.HttpOptions(timeout=int(self.timeout * 1000)))
         dropped = self._dropped.setdefault(model, set())
         cfg = dict(system_instruction=system, response_mime_type="application/json",
                    response_json_schema=_strip_additional(schema))
@@ -205,6 +216,10 @@ class LLM:
             raise LLMError("%s: %s" % (model, msg[:300]))
         except errors.ServerError as e:
             raise _Retryable(str(e))
+        except Exception as e:                       # httpx timeouts are not genai errors
+            if "timeout" in type(e).__name__.lower() or "timed out" in str(e).lower():
+                raise _Timeout(str(e))
+            raise
         if not resp.text:
             raise _Retryable("empty response (finish: %s)" % getattr(resp.candidates[0], "finish_reason", "?")
                              if resp.candidates else "empty response, no candidates")
@@ -231,4 +246,8 @@ class LLM:
 
 
 class _Retryable(Exception):
+    pass
+
+
+class _Timeout(Exception):
     pass

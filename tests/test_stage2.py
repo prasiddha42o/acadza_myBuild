@@ -290,3 +290,33 @@ def test_language_detection():
           "options are cut on my phone screen", "only B is correct but its multiple correct type and I got negative"]
     assert all(student_language(c) == "Hinglish" for c in hi)
     assert all(student_language(c) == "English" for c in en)
+
+
+def test_hung_model_times_out_and_falls_through(tmp_path, monkeypatch):
+    import types as T
+    import httpx
+    monkeypatch.setenv("GEMINI_API_KEY", "x")
+    monkeypatch.setenv("AUDITOR_MODEL", "m1,m2")
+    llm = llm_mod.LLM(provider="gemini", cache_dir=tmp_path, verbose=False)
+    llm.min_interval = 0
+    calls = []
+
+    def gen(model, contents, config):
+        calls.append(model)
+        if model == "m1":
+            raise httpx.ReadTimeout("The read operation timed out")
+        return T.SimpleNamespace(text='{"ok": 1}', candidates=[])
+    llm._client = T.SimpleNamespace(models=T.SimpleNamespace(generate_content=gen))
+    assert llm.json("auditor", "s", "u", {}) == {"ok": 1} and calls == ["m1", "m1", "m2"]
+
+
+def test_truncated_markup_from_model_is_rejected():
+    # real run, R006: the auditor's replace was cut off mid-tag and passed every other guard
+    q = Q[qid("e565c4")]
+    stem = payload(q)["question"]
+    from engine.guards import validate_edit
+    words = next(w for w in stem.split() if w.isalpha() and stem.count(w) == 1)
+    cut = {"field": "question", "find": words, "replace": words + ' <math display="inline"><mrow><mn>10</mn><mi mathvariant='}
+    ok = {"field": "question", "find": words, "replace": words + ' <math display="inline"><mn>10</mn></math>'}
+    assert any("broken markup" in v for v in validate_edit(q, "stem_data", cut))
+    assert not any("broken markup" in v for v in validate_edit(q, "stem_data", ok))
