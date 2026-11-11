@@ -183,7 +183,7 @@ def test_short_circuit_report_makes_no_reply_call():
     fake = FakeLLM("A", "A", "A", dict(defects=[], reports=[]))
     rows = audit_question(fake, q, reports_for(q["_id"]))[0]
     assert rows[0]["verdict"] == "not_actionable" and rows[0]["route"] == "no_change"
-    assert not any(c[1] == P.REPLY_V1 for c in fake.calls)
+    assert not any(c[1] == P.REPLY_V2 for c in fake.calls)
 
 
 def test_missing_auditor_verdict_fails_closed():
@@ -249,3 +249,13 @@ def test_prompts_md_has_every_prompt_verbatim():
     md = (ROOT / "PROMPTS.md").read_text(encoding="utf-8")
     for name, (ver, text) in P.PROMPTS.items():
         assert text in md, "PROMPTS.md is missing the verbatim %s %s prompt" % (name, ver)
+
+
+def test_language_detection():
+    from engine.run import student_language
+    hi = ["ans galat hai, 8225 aana chahiye", "inductance ki value hi nahi di hai", "answer 0.08 hai, 8 kyu?",
+          "Hindi me question chahiye", "solution me 5.47 angstrom aa raha hai, question me kuch aur pucha hai"]
+    en = ["I marked A B D and still got it wrong", "answer should be tan inverse 2", "Figure not given",
+          "options are cut on my phone screen", "only B is correct but its multiple correct type and I got negative"]
+    assert all(student_language(c) == "Hinglish" for c in hi)
+    assert all(student_language(c) == "English" for c in en)

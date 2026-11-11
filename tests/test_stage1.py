@@ -142,5 +142,5 @@ def test_parse_options_handles_assertion_reason():
 def test_gold_scores_itself_perfectly():
     results = [dict(g, confidence=0.95, evidence="", student_reply="") for g in GOLD]
     m = evaluate(results, GOLD)
-    assert m["verdict_acc"] == m["route_acc"] == m["edit_exact_on_editable"] == 1.0
-    assert m["auto_apply_precision"] == 1.0 and not m["unsafe_or_divergent_autos"]
+    assert m["verdict_acc"] == m["route_acc"] == m["edit_match_on_editable"] == 1.0
+    assert m["auto_apply_precision"] == 1.0 and not m["autos_not_exact"]

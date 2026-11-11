@@ -166,6 +166,14 @@ TEMPLATES = {
 }
 
 
+HINDI_WORDS = re.compile(r"\b(hai|hain|nahi|nahin|kya|kyu|kyun|galat|sahi|chahiye|chahie|aana|aa|raha|rahi|ki|ka|ke|me|mein|hona|toh|to|kar|karu|karna|di|diya|bhi|ho|hi|aur|wala|kaise)\b", re.I)
+
+
+def student_language(comment):
+    """Two or more common Hindi words in Roman script -> Hinglish. Decided in code, not by the model."""
+    return "Hinglish" if len(HINDI_WORDS.findall(comment or "")) >= 2 else "English"
+
+
 def status_of(route):
     return {"auto_apply": "FIXED", "faculty_review": "WITH_FACULTY"}.get(route, "NO_CHANGE")
 
@@ -190,12 +198,13 @@ def student_reply(llm, report, row, found):
     st = status_of(row["route"])
     facts = "\n".join([
         "status: %s" % st,
+        "student_language: %s" % student_language(report["comment"]),
         "verdict: %s (%s)" % (row["verdict"], TAX["verdicts"][row["verdict"]]),
         "what we found: %s" % found,
         "<student_comment>\n%s\n</student_comment>" % _esc(report["comment"]),
     ])
     try:
-        out = llm.json("reply", P.REPLY_V1, facts, P.REPLY_SCHEMA, effort="low")
+        out = llm.json("reply", P.REPLY_V2, facts, P.REPLY_SCHEMA, effort="low")
         text = (out.get("reply") or "").strip()
     except LLMError:
         text = ""
